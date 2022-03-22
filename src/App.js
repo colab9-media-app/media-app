@@ -1,25 +1,58 @@
-import logo from './logo.svg';
-import './App.css';
+// dependancies
+import axios from "axios";
+// hooks
+import { useEffect, useState } from "react";
+// components
+// styles
+
+
+
+
 
 function App() {
+  const [mediaResult, setMediaResult] = useState([]);
+
+  useEffect(() => {
+    const apiKey = 'f1c158b29959cefb485425b266803ee6';
+    const mediaSelect = 'movie';
+    const languageSelect = 'en';
+    const userInput = 'knives out';
+
+    axios({
+      url: `https://api.themoviedb.org/3/search/${mediaSelect}/`,
+      params: {
+        api_key: apiKey,
+        include_adult: false,
+        original_language: languageSelect,
+        query: userInput
+      }
+    }).then(res => {
+      console.log(res.data);
+      setMediaResult(res.data.results);
+    })
+  }, []);
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <h1>Movies and Stuff</h1>
+      <ul>
+        {
+          mediaResult.map((media) => {
+            return (
+              <li key={media.id}>
+                <img 
+                  src={`https://image.tmdb.org/t/p/w500/${media.poster_path}`} 
+                  alt={`Poster for ${media.original_title}`} />
+              </li>
+            )
+          })
+        }
+
+      </ul>
+    </>
+  )
+
 }
 
 export default App;
