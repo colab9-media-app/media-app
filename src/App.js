@@ -1,56 +1,27 @@
-// dependancies
-import axios from "axios";
-// hooks
-import { useEffect, useState } from "react";
-// components
-// styles
-
-
+import"./App.scss"
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Homepage from "./pages/homepage/homepage";
+import { ToastContainer } from 'react-toastify';
+import Footer from "./component/footer/footer";
+import Signin from "./component/signin/signin";
+import Signup from "./component/signup/signup";
 
 
 
 function App() {
-  const [mediaResult, setMediaResult] = useState([]);
-
-  useEffect(() => {
-    const apiKey = 'f1c158b29959cefb485425b266803ee6';
-    const mediaSelect = 'movie';
-    const languageSelect = 'en';
-    const userInput = 'knives out';
-
-    axios({
-      url: `https://api.themoviedb.org/3/search/${mediaSelect}/`,
-      params: {
-        api_key: apiKey,
-        include_adult: false,
-        original_language: languageSelect,
-        query: userInput
-      }
-    }).then(res => {
-      console.log(res.data);
-      setMediaResult(res.data.results);
-    })
-  }, []);
-
-
   return (
-    <>
-      <h1>Movies and Stuff</h1>
-      <ul>
-        {
-          mediaResult.map((media) => {
-            return (
-              <li key={media.id}>
-                <img 
-                  src={`https://image.tmdb.org/t/p/w500/${media.poster_path}`} 
-                  alt={`Poster for ${media.original_title}`} />
-              </li>
-            )
-          })
-        }
-
-      </ul>
-    </>
+    <BrowserRouter>
+    <div className="App">
+    {/* <ToastContainer position="top-center" /> */}
+        <Switch>
+          <Route exact path="/" component={Signin} />
+          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/homepage" component={Homepage} />
+             
+        </Switch>
+        </div>
+        <Footer/>
+        </BrowserRouter>
   )
 
 }

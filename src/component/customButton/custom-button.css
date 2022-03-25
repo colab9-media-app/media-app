@@ -1,0 +1,44 @@
+.custom-button {
+  background-color: #1e2842;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  color: #fff;
+  padding: .5rem 1rem;
+  text-transform: uppercase;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+.custom-button:hover {
+  background-color: white;
+  color: #1e2842;
+  border: 1px solid black;
+}
+
+.custom-button a {
+  text-decoration: none;
+  color: #fff;
+  padding: .5rem 0;
+  background-color: aqua;
+}
+
+.custom-button :hover {
+  background-color: #fff;
+  color: #1e2842;
+}
+
+.google-sign-in {
+  margin: 1rem auto;
+  background-color: #4285f4;
+  color: white;
+  width: 100%;
+  margin: 1rem .5rem;
+  padding: 10px 10px 10px 10px;
+}
+
+.google-sign-in:hover {
+  background-color: #357ae8;
+  border: none;
+  border: 1px solid black;
+}
+/*# sourceMappingURL=custom-button.css.map */
