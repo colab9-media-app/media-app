@@ -2,12 +2,13 @@ const SearchInput = props => {
   return (
     <div className="userSearch">
 
-      <label htmlFor="">Search for a movie or tv series:</label>
+      <label className="sr-only" htmlFor="">Search for a movie or tv series:</label>
       <input 
         type="text" 
         required 
         onChange={props.change}
-        value={props.value}   
+        value={props.value}  
+        placeholder="Search for a movie or tv show"
       />
     </div>
   )

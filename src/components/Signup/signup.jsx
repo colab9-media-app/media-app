@@ -1,7 +1,7 @@
 import { useState } from "react";
-import FormInput from "../formInput/form-input";
-import Logo from "../logo/logo";
-import CustomButton from "../customButton/custom-button";
+import FormInput from "../FormInput/form-input";
+import Logo from "../Logo/logo";
+import CustomButton from "../CustomButton/custom-button";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
