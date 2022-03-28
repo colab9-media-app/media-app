@@ -40,14 +40,13 @@ const MediaSearch = () => {
   const runSearch = () => {
     // remove defaults once inputs created
     const mediaType = 'movie';
-    const languageSelect = 'en';
 
     axios({
       url: `https://api.themoviedb.org/3/search/${mediaType}/`,
       params: {
         api_key: process.env.REACT_APP_API_KEY,
         include_adult: false,
-        original_language: languageSelect,
+        original_language: 'en',
         query: userInput
       }
     }).then(res => {
