@@ -1,11 +1,12 @@
-import"./App.css"
+
+import"./styles/App.css"
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Homepage from "./pages/homepage/homepage";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Footer from "./component/footer/footer";
-import Signin from "./component/signin/signin";
-import Signup from "./component/signup/signup";
+import Footer from "./components/Footer/footer";
+import Signin from "./components/Signin/signin";
+import Signup from "./components/Signup/signup";
 import { toast } from "react-toastify";
 
 

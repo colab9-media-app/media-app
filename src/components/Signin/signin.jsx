@@ -1,7 +1,7 @@
-import Logo from "../logo/logo";
+import Logo from "../Logo/logo";
 import "./signin.scss"
-import FormInput from "../formInput/form-input";
-import CustomButton from "../customButton/custom-button";
+import FormInput from "../FormInput/form-input";
+import CustomButton from "../CustomButton/custom-button";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { signInWithGooglePopup, createUserDocumentFromAuth, signInAuthUserWithEmailAndPassword } from "../../utils/firebase/firebase";
