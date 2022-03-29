@@ -1,33 +1,15 @@
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  border: 0;
-  padding: 0;
-  white-space: nowrap;
-  clip-path: inset(100%);
-  clip: rect(0 0 0 0);
-  overflow: hidden;
-}
-
-body {
-  background-color: rgb(30, 40, 66);
-  color: white;
-}
-
 h1 {
   font-family: "Proxima Nova", sans-serif;
   font-weight: bold;
   text-align: center;
 }
 
+// SEARCH INPUT
+
 form {
   display: flex;
   flex-direction: column;
-  // justify-content: center;
   align-items: center;
-  // width: 100%;
 }
 
 .userSearch {
@@ -36,15 +18,78 @@ form {
   input {
     background: darkslategrey;
     color: white;
-    opacity: 0.5;
+    // opacity: 0.5;
     padding: 6px 15px;
 
-    border: none;
+    border: white;
     box-shadow: 0px 3px 7px rgba(185, 185, 185, 0.15);
     border-radius: 30px;
-    // text-align: center;
+
     &::placeholder {
       color: white;
+      opacity: 0.5;
     }
   }
 }
+
+// FILTER RESULTS
+
+.filterSelect {
+  display: flex;
+}
+  
+.filterOptions {
+  display: flex;
+
+  li {
+    list-style: none;
+
+      button {
+        border: none;
+        background: inherit;
+        color: white;
+        opacity: 0.6;
+
+          &:hover {
+            opacity: 1;
+          }
+      }
+  }
+}
+
+.resultContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+    li {
+      flex: 0 1 auto;
+      list-style: none;
+      border: 2px solid white;
+      border-radius: 22px;
+      margin-bottom: 60px;
+
+      width: 200px;
+      height: 300px;
+    }
+}
+
+.posterContainer {
+  object-fit: cover;
+  z-index: -10;
+}
+
+.resultsInfo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dbInfo {
+  display: flex;
+
+    .imgContainer {
+      width: 30px;
+      height: 10px; 
+    }
+}
+

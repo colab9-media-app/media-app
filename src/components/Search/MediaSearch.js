@@ -7,9 +7,11 @@ const MediaSearch = () => {
   const [data, setData] = useState([]);
   const [mediaResult, setMediaResult] = useState([]);
   const [userInput, setUserInput] = useState('');
+  const [searchHeading, setSearchHeading] = useState('Search history');
 
   const handleSubmit = e => {
     e.preventDefault();    
+    setSearchHeading(userInput);
     runSearch();
   }
 
@@ -50,7 +52,10 @@ const MediaSearch = () => {
         />
         <button>Search</button>
       </form>
-      <Results result={mediaResult} />
+      <Results 
+        result={mediaResult} 
+        heading={searchHeading} 
+      />
     </>
   )
 }

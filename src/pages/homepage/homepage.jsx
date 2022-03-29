@@ -4,10 +4,10 @@ import './homepage.css'
 const Homepage = () => {
 
     return (
-      <>
+      <div className="wrapper">
         <h1>What are you looking for?</h1>
         <MediaSearch />
-      </>
+      </div>
     );
 }
  

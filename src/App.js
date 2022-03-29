@@ -1,5 +1,5 @@
 
-import"./App.css"
+import"./styles/App.css"
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Homepage from "./pages/homepage/homepage";
 import { ToastContainer } from 'react-toastify';
