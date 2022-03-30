@@ -1,10 +1,14 @@
 import Filter from './Filter';
-import ResultsInfo from './ResultsInfo';
+// import ResultsInfo from './ResultsInfo';
 
 const Results = props => {
   return (
     <div className="resultsSection">
-      <Filter result={props.result} heading={props.heading}/>
+      <Filter 
+        result={props.result} 
+        heading={props.heading}
+        error={props.error}
+      />
       {/* <ul className="resultContainer">
         {
           props.result.map((media) => {

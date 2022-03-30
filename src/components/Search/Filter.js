@@ -42,27 +42,34 @@ const Filter = (props) => {
           <li><button onClick={() => { showTv() }}>Tv shows</button></li>
         </ul>
       </div>
-      <ul className="resultContainer">
-        {
-          filteredResults.map((media) => {
-            return (
-              <li className="result" key={media.id}>
-                <ResultsInfo rating={media.vote_average} />
-                <img
-                  src={`https://image.tmdb.org/t/p/w500/${media.poster_path}`}
-                  alt={`Poster for ${media.original_title}`}
-                />
-                {
-                  media.media_type === "movie" ?
-                  <h3>{media.title}</h3> :
-                  <h3>{media.name}</h3>
-                }
-                <button>See Details</button>
-              </li>
-            )
-          })
-        }
-      </ul>
+      {
+        props.error ?
+          <div className="errorMessage">
+            <h3>Oops! No Results found.</h3>
+            <p>No results found for your search, please search again.</p>
+          </div> :
+          <ul className="resultContainer">
+            {
+              filteredResults.map((media) => {
+                return (
+                  <li className="result" key={media.id}>
+                    <ResultsInfo rating={media.vote_average} />
+                    <img
+                      src={`https://image.tmdb.org/t/p/w500/${media.poster_path}`}
+                      alt={`Poster for ${media.original_title}`}
+                    />
+                    {
+                      media.media_type === "movie" ?
+                        <h3>{media.title}</h3> :
+                        <h3>{media.name}</h3>
+                    }
+                    <button>See Details</button>
+                  </li>
+                )
+              })
+            }
+          </ul>
+      }
     </div>
   )
 }
