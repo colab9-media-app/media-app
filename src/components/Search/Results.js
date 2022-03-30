@@ -1,5 +1,5 @@
 import Filter from './Filter';
-// import ResultsInfo from './ResultsInfo';
+import ResultsInfo from './ResultsInfo';
 
 const Results = props => {
   return (
@@ -8,10 +8,13 @@ const Results = props => {
         result={props.result} 
         heading={props.heading}
         error={props.error}
+        setDisplay={props.setDisplay}
+        filteredResults={props.filteredResults}
+        setFilteredResults={props.setFilteredResults}
       />
-      {/* <ul className="resultContainer">
+      <ul className="resultContainer">
         {
-          props.result.map((media) => {
+          props.display.map((media) => {
             return (
               <li className="result" key={media.id}>
                 <ResultsInfo rating={media.vote_average} />
@@ -26,8 +29,8 @@ const Results = props => {
               </li>
             )
           })
-        } */}
-      {/* </ul> */}
+        } 
+      </ul>
     </div>
   )
 }

@@ -2,26 +2,7 @@ import { useState } from 'react';
 import ResultsInfo from './ResultsInfo';
 
 const Filter = (props) => {
-  const [filteredResults, setFilteredResults] = useState([]);
-
-  const showAll = () => {
-    setFilteredResults(all);
-    console.log(all, "all");
-  }
-
-  const showMovies = () => {
-    setFilteredResults(movie);
-    console.log(movie, "movies");
-  }
-
-  const showTv = () => {
-    setFilteredResults(tv);
-    console.log(tv, "series");
-  }
-
-  const all = props.result.filter((content) => {
-    return content.media_type === "movie" || content.media_type === "tv";
-  });
+  const all = props.result;
 
   const movie = props.result.filter((content) => {
     return content.media_type === "movie";
@@ -30,6 +11,24 @@ const Filter = (props) => {
   const tv = props.result.filter((content) => {
     return content.media_type === "tv";
   });
+
+  const showAll = () => {
+    props.setFilteredResults(all);
+    console.log(all, "all");
+    props.setDisplay([]);
+  };
+
+  const showMovies = () => {
+    props.setFilteredResults(movie);
+    console.log(movie, "movies");
+    props.setDisplay([]);
+  };
+
+  const showTv = () => {
+    props.setFilteredResults(tv);
+    console.log(tv, "series");
+    props.setDisplay([]);
+  };
 
 
   return (
@@ -50,7 +49,7 @@ const Filter = (props) => {
           </div> :
           <ul className="resultContainer">
             {
-              filteredResults.map((media) => {
+              props.filteredResults.map((media) => {
                 return (
                   <li className="result" key={media.id}>
                     <ResultsInfo rating={media.vote_average} />

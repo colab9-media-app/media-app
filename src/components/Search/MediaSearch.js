@@ -6,6 +6,8 @@ import Results from './Results';
 const MediaSearch = () => {
   // const [data, setData] = useState([]);
   const [mediaResult, setMediaResult] = useState([]);
+  const [initialDisplay, setInitialDisplay] = useState([]);
+  const [filteredResults, setFilteredResults] = useState([]);
   const [userInput, setUserInput] = useState('');
   const [errorStatus, setErrorStatus] = useState(false);
   const [searchHeading, setSearchHeading] = useState('Search history');
@@ -31,6 +33,7 @@ const MediaSearch = () => {
             } 
           });
           setMediaResult(filteredData);
+          setInitialDisplay(filteredData);
           console.log(mediaResult);
         } else {
           throw Error();
@@ -44,6 +47,9 @@ const MediaSearch = () => {
   const handleSubmit = e => {
     e.preventDefault();
     setErrorStatus(false);
+    setInitialDisplay([]);
+    setMediaResult([]);
+    setFilteredResults([]);
     setSearchHeading(userInput);
     runSearch();
   }
@@ -64,6 +70,10 @@ const MediaSearch = () => {
       
       <Results
         result={mediaResult}
+        display={initialDisplay}
+        setDisplay={setInitialDisplay}
+        filteredResults={filteredResults}
+        setFilteredResults={setFilteredResults}
         heading={searchHeading}
         error={errorStatus}
       />
