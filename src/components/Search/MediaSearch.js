@@ -10,7 +10,7 @@ const MediaSearch = () => {
   const [filteredResults, setFilteredResults] = useState([]);
   const [userInput, setUserInput] = useState('');
   const [errorStatus, setErrorStatus] = useState(false);
-  const [searchHeading, setSearchHeading] = useState('Search history');
+  const [searchHeading, setSearchHeading] = useState(null);
 
   const runSearch = () => {
     if (userInput !== '') {

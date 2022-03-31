@@ -1,11 +1,11 @@
 import { useState } from "react";
-import FormInput from "../FormInput/form-input";
-import Logo from "../Logo/logo";
-import CustomButton from "../CustomButton/custom-button";
+import FormInput from "../../Authentication/FormInput/form-input";
+import Logo from "../../Logo/logo";
+import CustomButton from "../../Authentication/CustomButton/custom-button";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
-import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from "../../utils/firebase/firebase";
+import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from "../../../utils/firebase/firebase";
 
 
 

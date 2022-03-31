@@ -1,10 +1,10 @@
-import Logo from "../Logo/logo";
+import Logo from "../../Logo/logo";
 import "./signin.scss"
 import FormInput from "../FormInput/form-input";
 import CustomButton from "../CustomButton/custom-button";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { signInWithGooglePopup, createUserDocumentFromAuth, signInAuthUserWithEmailAndPassword } from "../../utils/firebase/firebase";
+import { signInWithGooglePopup, createUserDocumentFromAuth, signInAuthUserWithEmailAndPassword } from "../../../utils/firebase/firebase";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
 
