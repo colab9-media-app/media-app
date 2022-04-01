@@ -1,6 +1,6 @@
 import "./passwordResetModal.scss";
 import Modal from "react-modal";
-import ButtonLoader from "../../buttonLoader/buttonLoader";
+import ButtonLoader from "../buttonLoader/buttonLoader";
 import { Link } from "react-router-dom";
 
 const PasswordResetModal = ({

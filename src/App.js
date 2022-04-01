@@ -4,7 +4,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Homepage from "./pages/homepage/homepage.jsx";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import ForgetPassword from "./component/forgetPassword/forgetPassword";
+import ForgetPassword from "./components/forgetPassword/forgetPassword";
 import Signin from "./components/Authentication/Signin/signin";
 import Signup from "./components/Authentication/Signup/signup";
 

@@ -1,13 +1,13 @@
 import "./forgetPassword.scss";
-import Logo from "../logo/logo";
-import FormInput from "../formInput/form-input";
+import Logo from "../Logo/logo";
+import FormInput from "../Authentication/FormInput/form-input";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import CustomButton from "../customButton/custom-button";
-import google from "../../asset/icons/google.svg";
+import CustomButton from "../Authentication/CustomButton/custom-button";
+import google from "../../assets/icons/google.svg";
 import { forgetPassword } from "../../utils/firebase/firebase";
 import { toast } from "react-toastify";
-import PasswordResetModal from "../modal/passwordResetModal/passwordResetModal";
+import PasswordResetModal from "../passwordResetModal/passwordResetModal";
 
 const ForgetPassword = () => {
   const [email, setEmail] = useState("");

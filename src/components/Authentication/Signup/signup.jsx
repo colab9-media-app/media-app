@@ -1,24 +1,14 @@
 import { useState } from "react";
-<<<<<<< HEAD:src/component/signup/signup.jsx
 import "./signup.scss";
-import FormInput from "../formInput/form-input";
-import Logo from "../logo/logo";
-import CustomButton from "../customButton/custom-button";
+import FormInput from "../FormInput/form-input";
+import Logo from "../../Logo/logo";
+import CustomButton from "../CustomButton/custom-button";
 import { toast } from "react-toastify";
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
-} from "../../utils/firebase/firebase";
-import SignModal from "../modal/signModal/signModal";
-=======
-import FormInput from "../../Authentication/FormInput/form-input";
-import Logo from "../../Logo/logo";
-import CustomButton from "../../Authentication/CustomButton/custom-button";
-import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
-import { useHistory } from "react-router-dom";
-import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from "../../../utils/firebase/firebase";
->>>>>>> main:src/components/Authentication/Signup/signup.jsx
+} from "../../../utils/firebase/firebase";
+import SignModal from "../../modal/signModal/signModal";
 
 
 
