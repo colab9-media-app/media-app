@@ -1,13 +1,13 @@
 
 import "./styles/App.css"
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Homepage from "./pages/homepage/homepage";
+import Homepage from "./pages/homepage/homepage.jsx";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import Footer from "./components/Footer/footer";
+import Footer from "./components/Footer/footer";
 import Signin from "./components/Authentication/Signin/signin";
 import Signup from "./components/Authentication/Signup/signup";
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 
 

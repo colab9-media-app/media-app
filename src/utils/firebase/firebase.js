@@ -1,9 +1,7 @@
-// import { async } from "@firebase/util";
+import { async } from "@firebase/util";
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth"
-import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
-
-// import { getDocs, collection, writeBatch, query } from 'firebase/firestore';
+import { getFirestore, doc, getDoc, getDocs, setDoc, collection, writeBatch, query,} from 'firebase/firestore';
 
 
 // Your web app's Firebase configuration

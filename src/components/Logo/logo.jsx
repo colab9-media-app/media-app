@@ -2,7 +2,7 @@
 import "./logo.scss"
 const Logo = () => {
     return ( 
-            <a href="/" className="logo"><p className="logo-text">LOGO</p></a>
+            <a to="/" className="logo"><p className="logo-text">LOGO</p></a>
      );
 }
  
