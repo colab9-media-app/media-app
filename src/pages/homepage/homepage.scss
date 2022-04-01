@@ -4,7 +4,7 @@ h1 {
   text-align: center;
 }
 
-h2 {
+.searchHeading {
   text-transform: capitalize;
 }
 
@@ -38,6 +38,10 @@ form {
 
 // FILTER RESULTS
 
+// .resultsSection {
+//   display: flex;
+// }
+
 .filterSelect {
   display: flex;
 }
@@ -66,21 +70,23 @@ form {
   flex-wrap: wrap;
   justify-content: space-between;
 
-    li {
+    .result {
       flex: 0 1 auto;
       list-style: none;
       border: 2px solid white;
       border-radius: 22px;
       margin-bottom: 60px;
 
-      width: 200px;
-      height: 300px;
+      width: 250px;
+      height: 400px;
+      // overflow-y: hidden;
     }
 }
 
 .posterContainer {
   object-fit: cover;
   z-index: -10;
+  
 }
 
 .resultsInfo {
