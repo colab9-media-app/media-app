@@ -1,4 +1,5 @@
 import Logo from "../logo/logo";
+import google from "../../asset/icons/google.svg";
 import "./signin.scss";
 import FormInput from "../formInput/form-input";
 import CustomButton from "../customButton/custom-button";
@@ -12,6 +13,7 @@ import {
 import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
 
+
 const defaultFormFields = {
   email: "",
   password: "",
@@ -21,6 +23,8 @@ const Signin = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
   const history = useHistory();
+  const [errormessage, setErrorMessage] = useState(false);
+
 
   const resetFormField = () => {
     setFormFields(defaultFormFields);
@@ -46,13 +50,16 @@ const Signin = () => {
       switch (error.code) {
         case "auth/user-not-found":
           toast.error("User not found");
+          setErrorMessage("User not found");
           break;
         case "auth/wrong-password":
           toast.error("Wrong Password");
+          setErrorMessage("Wrong Password");
           break;
         default:
           console.log(error);
           toast.error("Something went wrong");
+          setErrorMessage("Something went wrong");
       }
     }
   };
@@ -68,38 +75,85 @@ const Signin = () => {
       <Logo />
       <div className="signin-signup-form">
         <form onSubmit={handleSubmit}>
-          <FormInput
-            name="email"
-            type="email"
-            label="Email*"
-            value={email}
-            onChange={handleChange}
-            required
-          />
-          <FormInput
-            name="password"
-            type="password"
-            label="Password*"
-            value={password}
-            onChange={handleChange}
-            required
-          />
-
+          <div className="input-box">
+            {errormessage ? (
+              <FormInput
+                name="email"
+                type="email"
+                label="Email*"
+                value={email}
+                onChange={handleChange}
+                style={{ border: "1px solid red" }}
+                required
+              />
+            ) : (
+              <FormInput
+                name="email"
+                type="email"
+                label="Email*"
+                value={email}
+                onChange={handleChange}
+                required
+              />
+            )}
+            <i className="fa-solid fa-at"></i>
+            <span className="span-message" style={{ color: "crimson" }}>
+              {errormessage}
+            </span>
+          </div>
+          <div className="input-box">
+            {errormessage ? (
+              <FormInput
+                name="password"
+                type="password"
+                label="Password*"
+                value={password}
+                onChange={handleChange}
+                style={{ border: "1px solid red" }}
+                required
+              />
+            ) : (
+              <FormInput
+                name="password"
+                type="password"
+                label="Password*"
+                value={password}
+                onChange={handleChange}
+                required
+              />
+            )}
+            <i className="fa-solid fa-lock"></i>
+            <Link to="/password-reset" className="forgot-link">
+              Forgot?
+            </Link>
+            <span className="span-message" style={{ color: "crimson" }}>
+              {errormessage}
+            </span>
+          </div>
           <div className="buttons">
             <div className="sign-button">
-              <CustomButton>Sign in</CustomButton>
-              <Link to="/signup">Sign up</Link>
+              <CustomButton buttonType="signin">Sign in</CustomButton>
+              <Link to="/signup" className="create-an-account">
+                Create an Account
+              </Link>
             </div>
-
-            <div className="forgotpassword">
-              <button id="forgot-password">Forgot passowrd?</button>
+            <div className="or-line">
+              <div className="line"></div>
+              Or
+              <div className="line"></div>
             </div>
+            <CustomButton
+              type="button"
+              buttonType="google"
+              onClick={logGoogleuser}
+            >
+              <img src={google} alt="google-button" id="google-logo" /> Sign in
+              with Google
+            </CustomButton>
           </div>
-          <CustomButton type="button" buttonType="google" onClick={logGoogleuser}>
-            Sign in with Google
-          </CustomButton>
         </form>
       </div>
+     
     </div>
   );
 };

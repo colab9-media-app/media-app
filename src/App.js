@@ -3,10 +3,9 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Homepage from "./pages/homepage/homepage";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Footer from "./component/footer/footer";
 import Signin from "./component/signin/signin";
 import Signup from "./component/signup/signup";
-import { toast } from "react-toastify";
+import ForgetPassword from "./component/forgetPassword/forgetPassword";
 
 
 
@@ -17,8 +16,10 @@ function App() {
     <ToastContainer position="top-center" />
         <Switch>
           <Route exact path="/" component={Signin} />
+          <Route exact path="/signin" component={Signin} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/homepage" component={Homepage} />
+          <Route exact path="/password-reset" component={ForgetPassword} />
         </Switch>
         
         </div>

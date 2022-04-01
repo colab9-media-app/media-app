@@ -1,0 +1,47 @@
+#sign-modal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 30%;
+  margin: 1rem auto;
+  height: 30%;
+  border: none !important;
+  background-color: #212121 !important;
+  opacity: 0.9;
+  border-radius: 8px;
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 14px;
+  padding: 2rem;
+  color: #fff;
+  text-align: center;
+}
+
+#sign-modal p {
+  max-width: 279px;
+  font-weight: 100;
+  font-size: 15px;
+}
+
+#sign-modal .start-your-journey {
+  text-decoration: none;
+  font-size: 10px;
+  background-color: #1FA5FF;
+  color: #fff;
+  padding: .5rem 1rem;
+  border-radius: 14px;
+  text-transform: uppercase;
+}
+
+.modal-overlay {
+  width: 700px;
+  opacity: 1;
+  border: none !important;
+}
+/*# sourceMappingURL=signModal.css.map */

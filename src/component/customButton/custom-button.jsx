@@ -1,5 +1,6 @@
 import "./custom-button.scss"
 export const BUTTON_TYPE_CLASSES = {
+    signin: "signin",
     google: "google-sign-in",
   };
   
