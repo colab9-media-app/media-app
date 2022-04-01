@@ -1,0 +1,90 @@
+h1 {
+  font-family: "Proxima Nova", sans-serif;
+  font-weight: bold;
+  text-align: center;
+}
+
+.searchHeading {
+  text-transform: capitalize;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userSearch input {
+  background: darkslategrey;
+  color: white;
+  padding: 6px 15px;
+  border: white;
+  box-shadow: 0px 3px 7px rgba(185, 185, 185, 0.15);
+  border-radius: 30px;
+}
+.userSearch input::-moz-placeholder {
+  color: white;
+  opacity: 0.5;
+}
+.userSearch input:-ms-input-placeholder {
+  color: white;
+  opacity: 0.5;
+}
+.userSearch input::placeholder {
+  color: white;
+  opacity: 0.5;
+}
+
+.filterSelect {
+  display: flex;
+}
+
+.filterOptions {
+  display: flex;
+}
+.filterOptions li {
+  list-style: none;
+}
+.filterOptions li button {
+  border: none;
+  background: inherit;
+  color: white;
+  opacity: 0.6;
+}
+.filterOptions li button:hover {
+  opacity: 1;
+}
+
+.resultContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.resultContainer .result {
+  flex: 0 1 auto;
+  list-style: none;
+  border: 2px solid white;
+  border-radius: 22px;
+  margin-bottom: 60px;
+  width: 250px;
+  height: 400px;
+}
+
+.posterContainer {
+  -o-object-fit: cover;
+     object-fit: cover;
+  z-index: -10;
+}
+
+.resultsInfo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dbInfo {
+  display: flex;
+}
+.dbInfo .imgContainer {
+  width: 30px;
+  height: 10px;
+}/*# sourceMappingURL=homepage.css.map */

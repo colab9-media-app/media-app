@@ -1,4 +1,5 @@
 import { useState } from "react";
+<<<<<<< HEAD:src/component/signup/signup.jsx
 import "./signup.scss";
 import FormInput from "../formInput/form-input";
 import Logo from "../logo/logo";
@@ -9,6 +10,15 @@ import {
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase";
 import SignModal from "../modal/signModal/signModal";
+=======
+import FormInput from "../../Authentication/FormInput/form-input";
+import Logo from "../../Logo/logo";
+import CustomButton from "../../Authentication/CustomButton/custom-button";
+import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useHistory } from "react-router-dom";
+import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from "../../../utils/firebase/firebase";
+>>>>>>> main:src/components/Authentication/Signup/signup.jsx
 
 
 
