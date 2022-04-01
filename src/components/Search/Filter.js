@@ -14,19 +14,16 @@ const Filter = (props) => {
   const showAll = () => {
     props.setMediaResult(props.rawData);
     console.log(all, "all");
-    // props.setDisplay([]);
   };
 
   const showMovies = () => {
     props.setMediaResult(movie);
     console.log(movie, "movies");
-    // props.setDisplay([]);
   };
 
   const showTv = () => {
     props.setMediaResult(tv);
     console.log(tv, "series");
-    // props.setDisplay([]);
   };
 
   

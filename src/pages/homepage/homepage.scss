@@ -38,9 +38,6 @@ h1 {
 
 // FILTER RESULTS
 
-// .resultsSection {
-//   display: flex;
-// }
 
 .filterSelect {
   display: flex;
@@ -49,14 +46,14 @@ h1 {
 .filterOptions {
   display: flex;
 
-  // li {
-  //   list-style: none;
+  li {
+    list-style: none;
 
-  //     button {
-  //       border: none;
-  //       background: inherit;
-  //       color: white;
-  //       opacity: 0.6;
+      button {
+        border: none;
+        background: inherit;
+        color: white;
+        opacity: 0.6;
 
           &:hover {
             opacity: 1;

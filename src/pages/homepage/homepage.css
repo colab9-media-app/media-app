@@ -8,7 +8,7 @@ h1 {
   text-transform: capitalize;
 }
 
-form {
+.search {
   display: flex;
   flex-direction: column;
   align-items: center;
