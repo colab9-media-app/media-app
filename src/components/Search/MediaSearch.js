@@ -2,12 +2,11 @@ import axios from 'axios';
 import { useState } from 'react';
 import SearchInput from './SearchInput';
 import Results from './Results';
+import Filter from './Filter';
 
 const MediaSearch = () => {
-  // const [data, setData] = useState([]);
+  const [data, setData] = useState([]);
   const [mediaResult, setMediaResult] = useState([]);
-  const [initialDisplay, setInitialDisplay] = useState([]);
-  const [filteredResults, setFilteredResults] = useState([]);
   const [userInput, setUserInput] = useState('');
   const [errorStatus, setErrorStatus] = useState(false);
   const [searchHeading, setSearchHeading] = useState(null);
@@ -24,16 +23,16 @@ const MediaSearch = () => {
         }
       }).then(res => {
         const data = res.data.results;
-        // setData(data);
+
         // console.log(res);
         if (res.status === 200 && data.length > 0) {
           const filteredData = data.filter((content) => {
             if (content.poster_path !== null) {
               return content.media_type === "movie" || content.media_type === "tv";
-            } 
+            }
           });
+          setData(filteredData);
           setMediaResult(filteredData);
-          setInitialDisplay(filteredData);
           console.log(mediaResult);
         } else {
           throw Error();
@@ -47,9 +46,7 @@ const MediaSearch = () => {
   const handleSubmit = e => {
     e.preventDefault();
     setErrorStatus(false);
-    setInitialDisplay([]);
     setMediaResult([]);
-    setFilteredResults([]);
     setSearchHeading(userInput);
     runSearch();
   }
@@ -67,16 +64,17 @@ const MediaSearch = () => {
         />
         <button>Search</button>
       </form>
-      
-      <Results
-        result={mediaResult}
-        display={initialDisplay}
-        setDisplay={setInitialDisplay}
-        filteredResults={filteredResults}
-        setFilteredResults={setFilteredResults}
-        heading={searchHeading}
-        error={errorStatus}
-      />
+      <div className="resultsSection">
+        <Filter
+          rawData={data}
+          setMediaResult={setMediaResult}
+          heading={searchHeading}
+        />
+        <Results
+          result={mediaResult}
+          error={errorStatus}
+        />
+      </div>
     </>
   )
 }

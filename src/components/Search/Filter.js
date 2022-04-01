@@ -1,58 +1,38 @@
-import { useState } from 'react';
-import ResultsInfo from './ResultsInfo';
-import DetailsCard from './DetailsCard/DetailsCard.js';
-
 const Filter = (props) => {
-  const [show, setShow] = useState(false);
-  const [mediaID, setMediaID] = useState('');
+  
 
-  const all = props.result;
+  const all = props.rawData;
 
-  const movie = props.result.filter((content) => {
+  const movie = props.rawData.filter((content) => {
     return content.media_type === "movie";
   });
 
-  const tv = props.result.filter((content) => {
+  const tv = props.rawData.filter((content) => {
     return content.media_type === "tv";
   });
 
   const showAll = () => {
-    props.setFilteredResults(all);
+    props.setMediaResult(props.rawData);
     console.log(all, "all");
-    props.setDisplay([]);
+    // props.setDisplay([]);
   };
 
   const showMovies = () => {
-    props.setFilteredResults(movie);
+    props.setMediaResult(movie);
     console.log(movie, "movies");
-    props.setDisplay([]);
+    // props.setDisplay([]);
   };
 
   const showTv = () => {
-    props.setFilteredResults(tv);
+    props.setMediaResult(tv);
     console.log(tv, "series");
-    props.setDisplay([]);
+    // props.setDisplay([]);
   };
 
-  const openModal = (index) => {
-    setShow(true);
-    setMediaID(index);
-  }
-
+  
   return (
     <>
-      {
-        show ?
-         
-            <DetailsCard
-              show={show}
-              setShow={setShow}
-              id={mediaID}
-              details={props.filteredResults[mediaID]}
-            />
-         
-          : null
-      }
+      {/*  */}
       <div className="filter">
         <div className="filterSelect">
           {
@@ -66,7 +46,7 @@ const Filter = (props) => {
             <li><button onClick={() => { showTv() }}>Tv shows</button></li>
           </ul>
         </div>
-        {
+        {/* {
           props.error ?
             <div className="errorMessage">
               <h3>Oops! No Results found.</h3>
@@ -93,7 +73,7 @@ const Filter = (props) => {
                 })
               }
             </ul>
-        }
+        } */}
       </div>
     </>
   )

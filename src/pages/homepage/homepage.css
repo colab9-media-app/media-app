@@ -60,14 +60,14 @@ form {
   flex-wrap: wrap;
   justify-content: space-between;
 }
-.resultContainer li {
+.resultContainer .result {
   flex: 0 1 auto;
   list-style: none;
   border: 2px solid white;
   border-radius: 22px;
   margin-bottom: 60px;
-  width: 200px;
-  height: 300px;
+  width: 250px;
+  height: 400px;
 }
 
 .posterContainer {
