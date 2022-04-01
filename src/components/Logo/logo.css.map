@@ -1,1 +1,9 @@
-{"version":3,"sources":["logo.scss","logo.css"],"names":[],"mappings":"AACA;EACI,kBAAA;ACAJ;ADCI;EACI,sBAAA;EACA,WAAA;EACA,kBAAA;EACA,WAAA;ACCR","file":"logo.css"}
+{
+    "version": 3,
+    "mappings": "AACA,AAAA,KAAK,CAAA;EACD,UAAU,EAAE,MAAM;EAClB,MAAM,EAAE,OAAO;CAElB",
+    "sources": [
+        "logo.scss"
+    ],
+    "names": [],
+    "file": "logo.css"
+}
