@@ -1,24 +1,14 @@
 .signin-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   height: 100vh;
-  background-image: url(../../asset/images/spiderman.png);
+  background-image: url(../../../assets/images/spiderman.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
-
 .signin-container .signin-signup-form {
   width: 30%;
   margin: 1rem;
@@ -26,31 +16,21 @@
   background-color: #212121;
   opacity: 0.65;
   border-radius: 8px;
-  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 14px;
   padding: 2rem;
 }
-
 .signin-container .signin-signup-form .buttons {
   width: 94%;
   margin: 0 auto;
 }
-
 .signin-container .signin-signup-form .buttons .sign-button {
   width: 100%;
   margin: 0 auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
 }
-
 .signin-container .signin-signup-form .buttons .create-an-account {
   text-decoration: none;
   color: #ffffff;
@@ -58,23 +38,15 @@
   width: 50%;
   text-align: end;
 }
-
 .signin-container .signin-signup-form #google-logo {
-  -webkit-transform: translateY(4px);
-          transform: translateY(4px);
+  transform: translateY(4px);
 }
-
 .signin-container .signin-signup-form .or-line {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   color: #ffffff;
 }
-
 .signin-container .signin-signup-form .or-line .line {
   border-bottom: 1px solid #ffffff;
   width: 40%;
@@ -86,18 +58,16 @@
   color: #B3B3B3;
   margin: 0 auto;
 }
-
 .input-box .fa-at, .input-box .fa-lock, .input-box .fa-user {
   position: absolute;
   top: 53%;
-  padding-left: .5rem;
+  padding-left: 0.5rem;
 }
-
 .input-box .forgot-link {
   position: absolute;
   top: 50%;
   right: 4%;
-  padding-right: .5rem;
+  padding-right: 0.5rem;
   color: #fff;
   font-size: 12px;
   text-decoration: none;
@@ -106,7 +76,6 @@
   color: #B3B3B3;
   font-size: 15px;
 }
-
 .input-box .span-message {
   position: absolute;
   bottom: 0;
@@ -120,8 +89,8 @@
   .signin-container .create-an-account {
     width: 50%;
   }
+
   .fa-at, .fa-lock {
-    padding-left: .2rem;
+    padding-left: 0.2rem;
   }
-}
-/*# sourceMappingURL=signin.css.map */
+}/*# sourceMappingURL=signin.css.map */
