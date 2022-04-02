@@ -42,7 +42,6 @@ const Filter = (props) => {
             <li><button onClick={() => { showTv() }}>Tv shows</button></li>
           </ul>
         </div>
-       
       </div>
     </>
   )
