@@ -1,9 +1,4 @@
 .logo {
   text-align: center;
-}
-.logo .logo-text {
-  border: 1px solid #fff;
-  width: 90px;
-  padding: 1rem 2rem;
-  color: #fff;
+  cursor: pointer;
 }/*# sourceMappingURL=logo.css.map */

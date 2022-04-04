@@ -1,18 +1,26 @@
+
 .group{
-    padding: 1rem;
+   margin: .5rem auto;
     .form-input{
-        width: 100%;
-        margin: .5rem 0;
-        padding: 10px 10px 10px 5px;
-          border-radius: 8px;
+        width: 90%;
+        margin: 1rem auto;
+        padding: 10px 10px 10px 30px;
+          border-radius: 13px;
           outline: none;
-          border: 1px solid #fff;
-          background-color: rgb(30, 40, 66) ;
+          border: none;
+          background-color: #B9B9B926;
           color: #fff;
+          font-size: 15px;
         }
     .form-input-label{
        padding-bottom: .2rem;
        text-align: left;
+       color: #ffffff;
+       font-size: 15px;
     }
 }
+
+
+
+
 

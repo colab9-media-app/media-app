@@ -4,51 +4,101 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
+    background-image: url(../../../assets/images/spiderman.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   .signin-signup-form{
-    width: fit-content;
+    width: 30%;
     margin: 1rem;
-    border: 1px solid #fff;
+    border: none;
+    background-color: #212121;
+    opacity: 0.65;
     border-radius: 8px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 14px;
     padding: 2rem;
    .buttons{
-    padding: 0 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+       width: 94%;
+       margin: 0 auto;
+    // padding: 0 1rem;
+    
     .sign-button{
+        width: 100%;
+        margin: 0 auto;
         display: flex;
-       gap: 1rem;
-       & a{
-        background-color: rgb(30, 40, 66) ;
-        border: 1px solid #fff;
-        border-radius: 8px;
-        color: #fff;
-        padding: .5rem 1rem;
-        text-transform: uppercase;
-        font-weight: bolder;
+        align-items: center;
+        justify-content: space-between ;
+    //    gap: 2em;
+    }
+    .create-an-account{
         text-decoration: none;
+        color: #ffffff;
         font-size: 12px;
-       
+        width: 50%;
+        text-align: end;
+    }
+   }
+   #google-logo{
+       transform: translateY(4px);
+   }
+   .or-line{
+       width: 100%;
+       display: flex;
+       align-items: center;
+       color: #ffffff;
+       .line{
+           border-bottom: 1px solid #ffffff;
+           width: 40%;
+           margin: 1rem auto;
        }
-       :hover{
-        background-color: #fff;
-        color: rgb(30, 40, 66) ;
-    }
-    }
-    #forgot-password{
-        border: none;
-        background: none;
-        color: #fff;
-        cursor: pointer;
-    }
    }
 }
 }
-// //    form{
-// //        display: block;
-// //        margin: 0 auto;
-// //        background-color: aqua;
-// //        width: 100%;
-// //    }
-//     }
-// }
+.input-box{
+    position: relative;
+    color: #B3B3B3;
+    margin: 0 auto;
+    .fa-at, .fa-lock, .fa-user{
+        position: absolute;
+        top:53%;
+        // left: 2%;
+        padding-left: .5rem;
+      
+    }
+    .forgot-link{
+        position: absolute;
+        top: 50%;
+        right: 4%;
+        padding-right: .5rem;
+        color: #fff;
+        font-size: 12px;
+        text-decoration: none;
+        cursor: pointer;
+        text-decoration: none;
+        color: #B3B3B3;
+        font-size: 15px;
+    }
+.span-message{
+    position: absolute;
+    bottom: 0;
+    font-size: 12px;
+
+}
+}
+
+
+@media screen and (max-width: 768px) {
+    .signin-container{
+        .signin-signup-form{
+            width: 70%;
+        }
+        .create-an-account{
+            width: 50%;
+        }
+    }
+    .fa-at, .fa-lock{
+        padding-left: .2rem ;
+    }
+}
+    

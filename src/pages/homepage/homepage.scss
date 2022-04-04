@@ -10,7 +10,7 @@ h1 {
 
 // SEARCH INPUT
 
-form {
+.search {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -38,9 +38,6 @@ form {
 
 // FILTER RESULTS
 
-// .resultsSection {
-//   display: flex;
-// }
 
 .filterSelect {
   display: flex;

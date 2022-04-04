@@ -1,8 +1,9 @@
-
 import "./logo.scss"
+import logo from "../../assets/images/logo.svg"
+import { Link } from "react-router-dom";
 const Logo = () => {
     return ( 
-            <a to="/" className="logo"><p className="logo-text">LOGO</p></a>
+            <Link to="/" className="logo"><img src={logo} alt="logo"  /></Link>
      );
 }
  
