@@ -56,7 +56,7 @@ const MediaSearch = () => {
   }
 
   return (
-    <>
+    <div className="searchPage">
       <form className="search" action="" onSubmit={handleSubmit}>
         <SearchInput
           change={handleChange}
@@ -75,7 +75,7 @@ const MediaSearch = () => {
           error={errorStatus}
         />
       </div>
-    </>
+    </div>
   )
 }
 

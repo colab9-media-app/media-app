@@ -1,7 +1,19 @@
-h1 {
+.App h1 {
   font-family: "Proxima Nova", sans-serif;
   font-weight: bold;
   text-align: center;
+  margin: 0;
+  padding: 60px 0 30px 0;
+}
+
+.homepage {
+  min-height: 100vh;
+  background-image: url(../../assets/images/dunkirk.png);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  // background-color: linear-gradient(0deg, #1F2123 0%, #1F2123 35.44%, rgba(31, 33, 35, 0) 148.73%);
 }
 
 .searchHeading {
@@ -36,67 +48,86 @@ h1 {
   }
 }
 
-// FILTER RESULTS
-
+// FILTER
 
 .filterSelect {
   display: flex;
 }
-  
+
 .filterOptions {
   display: flex;
 
   li {
     list-style: none;
 
-      button {
-        border: none;
-        background: inherit;
-        color: white;
-        opacity: 0.6;
+    button {
+      border: none;
+      background: inherit;
+      color: white;
+      opacity: 0.6;
 
-          &:hover {
-            opacity: 1;
-          }
+      &:hover {
+        opacity: 1;
       }
+    }
   }
 }
+
+// RESULTS
 
 .resultContainer {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-
-    .result {
-      flex: 0 1 auto;
-      list-style: none;
-      border: 2px solid white;
-      border-radius: 22px;
-      margin-bottom: 60px;
-
-      width: 250px;
-      height: 400px;
-      // overflow-y: hidden;
+  justify-content: center;
+  position: relative;
+  .result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 0 1 auto;
+    list-style: none;
+    padding: 8px 0;
+    margin: 0 15px 60px 15px;
+    box-shadow: 1px 1px 12px 1px rgba(126, 126, 126, 0.25);
+    border-radius: 5px;
+    // box-shadow: 0px 0px 5px 4px rgba(253, 253, 253, 0.096);
+    background: linear-gradient(180deg, #111111 9.88%, rgba(51, 51, 51, 0) 46.7%, #000000 83.06%);
+    img {
+      opacity: 0.5;
     }
+  }
 }
 
 .posterContainer {
   object-fit: cover;
   z-index: -10;
-  
+  height: 300px;
+  width: 250px;
 }
 
 .resultsInfo {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+}
+
+.icon {
+  // background-color: blue;
+  border: none;
 }
 
 .dbInfo {
   display: flex;
 
-    .imgContainer {
-      width: 30px;
-      height: 10px; 
-    }
+  .imgContainer {
+    width: 30px;
+    height: 10px;
+  }
 }
 
+.detailsButton {
+  padding: 8px 15px;
+  border: none;
+  background-color: #1fa5ff;
+  color: white;
+  border-radius: 70px;
+}

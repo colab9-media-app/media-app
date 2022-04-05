@@ -85,8 +85,12 @@ const Results = props => {
                         alt={`Poster for ${media.original_title}`}
                       />
                     </div>
-                    <h3>{media.title}</h3>
-                    <button onClick={() => {runDetailsSearch(media.id, index)}}>See Details</button>
+                    {
+                      media.title ?
+                        <h3>{media.title}</h3>
+                      : <h3>{media.name}</h3>
+                    }
+                    <button className="detailsButton" onClick={() => {runDetailsSearch(media.id, index)}}>See Details</button>
                   </li>
                 )
               })

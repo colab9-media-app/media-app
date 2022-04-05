@@ -6,8 +6,8 @@ const ResultsInfo = props => {
   return (
     <div className="resultsInfo">
       <div className="resultButtons">
-        <button><FontAwesomeIcon icon={faBookmark} /></button>
-        <button><FontAwesomeIcon icon={faEye} /></button>
+        <button><FontAwesomeIcon className="icon" icon={faBookmark} /></button>
+        <button><FontAwesomeIcon className="icon" icon={faEye} /></button>
       </div>
       <div className="dbInfo">
         <div className="imgContainer">
