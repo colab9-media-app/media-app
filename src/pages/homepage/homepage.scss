@@ -1,9 +1,17 @@
+@import "../../styles/sass/normalize";
+@import "../../styles/sass/variables";
+
 .App h1 {
   font-family: "Proxima Nova", sans-serif;
   font-weight: bold;
   text-align: center;
   margin: 0;
   padding: 60px 0 30px 0;
+}
+
+p {
+  margin: 0;
+  padding: 0;
 }
 
 .homepage {
@@ -36,11 +44,9 @@
     color: white;
     // opacity: 0.5;
     padding: 6px 15px;
-
     border: white;
     box-shadow: 0px 3px 7px rgba(185, 185, 185, 0.15);
     border-radius: 30px;
-
     &::placeholder {
       color: white;
       opacity: 0.5;
@@ -85,49 +91,88 @@
     flex-direction: column;
     align-items: center;
     flex: 0 1 auto;
+    position: relative;
     list-style: none;
-    padding: 8px 0;
+    padding: 0;
     margin: 0 15px 60px 15px;
     box-shadow: 1px 1px 12px 1px rgba(126, 126, 126, 0.25);
     border-radius: 5px;
-    // box-shadow: 0px 0px 5px 4px rgba(253, 253, 253, 0.096);
     background: linear-gradient(180deg, #111111 9.88%, rgba(51, 51, 51, 0) 46.7%, #000000 83.06%);
-    img {
-      opacity: 0.5;
+    h3 {
+      position: absolute;
+      bottom: 45px;
+      font-size: 2rem;
+      text-align: center;
     }
   }
 }
 
 .posterContainer {
   object-fit: cover;
-  z-index: -10;
-  height: 300px;
-  width: 250px;
+  border-radius: 5px;
+  height: 400px;
+  width: 350px;
+  background: linear-gradient(180deg, #111111 9.88%, rgba(51, 51, 51, 0) 46.7%, #000000 83.06%);
+  img {
+    opacity: 0.45;
+    box-shadow: 1px 1px 12px 1px rgba(126, 126, 126, 0.25);
+    border-radius: 5px;
+  }
 }
 
 .resultsInfo {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  position: absolute;
+  top: 10px;
+  z-index: 40;
 }
 
-.icon {
-  // background-color: blue;
+.detailsButton {
+  position: absolute;
+  bottom: 25px;
+}
+
+.saveButtons button {
   border: none;
+  border-radius: 50%;
+  // background-color: $highlight;
+  padding: 6px;
+  margin: 0 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  .fa-eye,
+  .fa-bookmark {
+    color: white;
+  }
+}
+
+.fa-eye {
+  height: 20px;
+  width: 23px;
+}
+
+.fa-bookmark {
+  height: 20px;
+  width: 23px;
+}
+
+.saveButtons, .dbInfo {
+  margin: 0 25px;
 }
 
 .dbInfo {
   display: flex;
-
-  .imgContainer {
-    width: 30px;
-    height: 10px;
+  .logoContainer {
+    width: 40px;
+    height: 24px;
+    margin-right: 15px;
   }
 }
 
 .detailsButton {
   padding: 8px 15px;
   border: none;
-  background-color: #1fa5ff;
+  background-color: $highlight;
   color: white;
   border-radius: 70px;
 }
