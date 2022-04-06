@@ -21,7 +21,7 @@ const DetailsCard = ({ show, setShow, details, detailsError }) => {
             {
               details.title ?
                 <h3>{details.title}</h3>
-              :
+                :
                 <div className="tvTitle">
                   <h3>{details.name}</h3>
                   <p>{moment(details.first_air_date).format('YYYY')}</p>
@@ -55,10 +55,10 @@ const DetailsCard = ({ show, setShow, details, detailsError }) => {
                         <h4>Next episode airing</h4>
                         <p>{moment(details.next_episode_to_air.air_date).format('MMMM D, YYYY')}</p>
                       </div>
-                    : null
+                      : null
                   }
                 </div>
-              :
+                :
                 <div className="dateDetails">
                   <h4>Release Date</h4>
                   <p>{moment(details.release_date).format('MMM D, YYYY')}</p>
@@ -67,8 +67,17 @@ const DetailsCard = ({ show, setShow, details, detailsError }) => {
           </div>
         </div>
         <div className="cardBottom">
-          <img src={logoTMDB} alt="Logo for TMDB." />
-          <p>{details.vote_average}</p>
+          <div className="left">
+
+            <div className="logoContainer">
+              <img src={logoTMDB} alt="Logo for TMDB." />
+            </div>
+            <p>{details.vote_average}</p>
+          </div>
+          <div className="right">
+            <button>Add to Watchlist</button>
+            <button>Already Watched</button>
+          </div>
         </div>
       </div>
   )
