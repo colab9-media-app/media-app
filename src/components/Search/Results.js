@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useState } from 'react';
 import ResultsInfo from './ResultsInfo';
 import DetailsCard from './DetailsCard/DetailsCard.js';
@@ -5,35 +6,73 @@ import DetailsCard from './DetailsCard/DetailsCard.js';
 
 const Results = props => {
   const [show, setShow] = useState(false);
+  const [index, setIndex] = useState('');
   const [mediaID, setMediaID] = useState('');
+  const [details, setDetails] = useState([]);
+  const [detailsError, setDetailsError] = useState(false);
 
-  const openModal = (index) => {
+  const runDetailsSearch = (id, index) => {
+    if (props.result[index].media_type === 'movie') {
+      axios({
+        url: `https://api.themoviedb.org/3/movie/${id}`,
+        params: {
+          api_key: process.env.REACT_APP_API_KEY,
+          include_adult: false,
+          original_language: 'en',
+        }
+      }).then(res => {
+        if (res.status === 200) {
+          setDetails(res.data);
+          console.log(res.data);
+        } else {
+          throw Error();
+        }
+      }).catch(() => {
+        setDetailsError(true);
+      });
+    } else if (props.result[index].media_type === 'tv') {
+      axios({
+        url: `https://api.themoviedb.org/3/tv/${id}`,
+        params: {
+          api_key: process.env.REACT_APP_API_KEY,
+          include_adult: false,
+          original_language: 'en',
+        }
+      }).then(res => {
+        if (res.status === 200) {
+          setDetails(res.data);
+          console.log(res.data);
+        } else {
+          throw Error();
+        }
+      }).catch(() => {
+        setDetailsError(true);
+      });
+    }
     setShow(true);
-    setMediaID(index);
+    
   }
-
 
   return (
     <>
-
       {
         props.error ?
           <div className="errorMessage">
             <h3>Oops! No Results found.</h3>
             <p>No results found for your search, please search again.</p>
           </div> :
-
-
           <ul className="resultContainer">
             {
               show ?
                 <DetailsCard
                   show={show}
                   setShow={setShow}
-                  id={mediaID}
-                  details={props.result[mediaID]}
+                  // index={index}
+                  // id={mediaID}
+                  details={details}
+                  error={detailsError}
                 />
-                : null
+              : null
             }
             {
               props.result.map((media, index) => {
@@ -46,8 +85,12 @@ const Results = props => {
                         alt={`Poster for ${media.original_title}`}
                       />
                     </div>
-                    <h3>{media.title}</h3>
-                    <button onClick={() => openModal(index)}>See Details</button>
+                    {
+                      media.title ?
+                        <h3>{media.title}</h3>
+                      : <h3>{media.name}</h3>
+                    }
+                    <button className="detailsButton" onClick={() => {runDetailsSearch(media.id, index)}}>See Details</button>
                   </li>
                 )
               })
