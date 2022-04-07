@@ -54,7 +54,14 @@ p {
       color: white;
       opacity: 0.7;
     }
+    &:focus {
+      outline: 0;
+    }
   }
+}
+
+.userSearch input:focus + button i {
+  color: white;
 }
 
 .searchButton {
