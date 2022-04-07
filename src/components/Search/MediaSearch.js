@@ -56,13 +56,13 @@ const MediaSearch = () => {
   }
 
   return (
-    <>
+    <div className="searchPage">
       <form className="search" action="" onSubmit={handleSubmit}>
         <SearchInput
           change={handleChange}
           value={userInput}
         />
-        <button>Search</button>
+        {/* <button>Search</button> */}
       </form>
       <div className="resultsSection">
         <Filter
@@ -75,7 +75,7 @@ const MediaSearch = () => {
           error={errorStatus}
         />
       </div>
-    </>
+    </div>
   )
 }
 
