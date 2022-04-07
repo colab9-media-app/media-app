@@ -10,6 +10,7 @@ const SearchInput = props => {
         placeholder="Search for a movie or tv show"
         maxLength="45"
       />
+      <button className="searchButton"><i className="fa-solid fa-magnifying-glass"></i></button>
     </div>
   )
 }
