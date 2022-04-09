@@ -3,15 +3,15 @@ import google from "../../../assets/icons/google.svg";
 import "./signin.scss";
 import FormInput from "../FormInput/form-input";
 import CustomButton from "../CustomButton/custom-button";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import {
   signInWithGooglePopup,
-  createUserDocumentFromAuth,
   signInAuthUserWithEmailAndPassword,
 } from "../../../utils/firebase/firebase";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
+
 
 
 const defaultFormFields = {
@@ -24,6 +24,7 @@ const Signin = () => {
   const { email, password } = formFields;
   const history = useHistory();
   const [errormessage, setErrorMessage] = useState(false);
+  
 
 
   const resetFormField = () => {
@@ -31,19 +32,19 @@ const Signin = () => {
   };
 
   const logGoogleuser = async () => {
-    const { user } = await signInWithGooglePopup();
-    createUserDocumentFromAuth(user);
+    signInWithGooglePopup();
+    toast.success("Welcome Back");
+      history.push("./homepage");
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await signInAuthUserWithEmailAndPassword(
+      const {user} = await signInAuthUserWithEmailAndPassword(
         email,
         password
       );
       resetFormField();
-      console.log(response);
       toast.success("Welcome Back");
       history.push("./homepage");
     } catch (error) {

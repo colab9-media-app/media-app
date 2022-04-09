@@ -78,7 +78,7 @@ const Results = props => {
               props.result.map((media, index) => {
                 return (
                   <li className="result" key={media.id}>
-                    <ResultsInfo rating={media.vote_average} />
+                    <ResultsInfo media={media} />
                     <div className="posterContainer">
                       <img
                         src={`https://image.tmdb.org/t/p/w500/${media.poster_path}`}

@@ -1,8 +1,10 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import SearchInput from './SearchInput';
 import Results from './Results';
 import Filter from './Filter';
+
+import { UserContext } from "../../contexts/userContext";
 
 const MediaSearch = () => {
   const [data, setData] = useState([]);
@@ -10,6 +12,8 @@ const MediaSearch = () => {
   const [userInput, setUserInput] = useState('');
   const [errorStatus, setErrorStatus] = useState(false);
   const [searchHeading, setSearchHeading] = useState(null);
+  const {currentUser} = useContext(UserContext);
+
 
   const runSearch = () => {
     if (userInput !== '') {

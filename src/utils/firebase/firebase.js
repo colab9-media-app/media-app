@@ -7,6 +7,8 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   sendPasswordResetEmail,
+  signOut,
+  onAuthStateChanged,
 } from "firebase/auth";
 import {
   getFirestore,
@@ -14,9 +16,14 @@ import {
   getDoc,
   getDocs,
   setDoc,
+  documentId,
   collection,
+  addDoc,
   writeBatch,
   query,
+  where,
+  FieldPath,
+  deleteDoc
 } from "firebase/firestore";
 
 // Your web app's Firebase configuration
@@ -41,7 +48,7 @@ provider.setCustomParameters({
 export const auth = getAuth();
 export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
 
-export const db = getFirestore();
+export const db = getFirestore(firebaseApp);
 
 export const createUserDocumentFromAuth = async (
   userAuth,
@@ -90,3 +97,44 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
 export const forgetPassword = async (email) => {
   return sendPasswordResetEmail(auth, email);
 };
+
+export const signUserOut = async () => await signOut(auth);
+
+export const onAuthStateChangedListener = (callback) => onAuthStateChanged(auth, callback ); 
+
+export const addMovieToWatchList = async (movie, userId) => {
+const movieLocRef = collection(db, "users", userId, "watchlist")
+const q = query(movieLocRef, where("movieId", "==", movie.id))
+const queryResult = await getDocs(q).then((v)=> v.docs);
+if(queryResult.length === 0 ){
+  // await setDoc(db(movieLocRef, movie.id), {
+  //   ...movie,
+  //   movieId: movie.id
+    
+  // }
+  // add a document 
+  const newMovieRef = doc(movieLocRef, movie.id)
+  await setDoc((newMovieRef), {
+    ...movie,
+    movieId: movie.id
+  })
+}
+}
+
+
+const deleteMovieFromWatchList = async (m, userId)=> {
+
+  const ref = collection(db, "users", userId, "watchlist");
+  await deleteDoc(db(ref, m.id))
+  
+}
+
+export const getUserWatchList = async (userId) => {
+  if(!userId) return;
+  
+  const watchListRef = collection(db, "watchlist");
+  const watchListSnapshot = await getDocs(watchListRef);
+  const watchList = watchListSnapshot.docs.map((doc) => doc.data());
+  return watchList;
+}
+
