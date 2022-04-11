@@ -60,15 +60,14 @@ const Results = props => {
           <div className="errorMessage">
             <h3>Oops! No Results found.</h3>
             <p>No results found for your search, please search again.</p>
-          </div> :
+          </div> 
+        :
           <ul className="resultContainer">
             {
               show ?
                 <DetailsCard
                   show={show}
                   setShow={setShow}
-                  // index={index}
-                  // id={mediaID}
                   details={details}
                   error={detailsError}
                 />

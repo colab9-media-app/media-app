@@ -62,7 +62,6 @@ const MediaSearch = () => {
           change={handleChange}
           value={userInput}
         />
-        {/* <button>Search</button> */}
       </form>
       <div className="resultsSection">
         <Filter

@@ -1,19 +1,27 @@
+h4 {
+  margin: 25px 0 10px;
+}
+
 .modal {
-  width: 85%;
-  height: 50vh;
-  margin: 0 auto;
-  padding: 20px;
+  width: 70%;
+  max-height: 400px;
+  padding: 40px;
   background: black;
   color: white;
-  border-radius: 30px;
-  z-index: 10;
-  position: relative;
+  border-radius: 15px;
+  z-index: 50;
+  position: fixed;
+  top: calc(50% - 200px);
 }
 
 .closeButton {
   position: absolute;
   top: 10px;
   right: 10px;
+  background: none;
+  color: white;
+  border: none;
+  font-weight: bold;
 }
 
 .cardInfo {
@@ -22,10 +30,18 @@
 
 .cardLeft {
   padding: 8px;
+  margin-right: 40px;
+  width: 40%;
 }
 .cardLeft .poster {
   -o-object-fit: cover;
      object-fit: cover;
+  width: 100%;
+  height: 280px;
+}
+
+.cardRight {
+  flex: 0 2 auto;
 }
 
 .genre {
@@ -46,4 +62,13 @@
 }
 .numberDetails .seasonNum, .numberDetails .episodeNum, .numberDetails .airDate {
   display: flex;
+}
+
+.dateDetails {
+  display: flex;
+  margin-top: 25px;
+}
+.dateDetails h4 {
+  margin: 0;
+  padding-right: 30px;
 }/*# sourceMappingURL=detailsCard.css.map */
