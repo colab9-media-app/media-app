@@ -3,15 +3,21 @@
 
 .App h1 {
   font-family: "Proxima Nova", sans-serif;
-  font-weight: bold;
+  font-weight: 800;
+  font-size: 2.4rem;
   text-align: center;
   margin: 0;
   padding: 60px 0 30px 0;
 }
 
+h2, h3 {
+  font-weight: 700;
+}
+
 p {
   margin: 0;
   padding: 0;
+  font-size: 0.8rem;
 }
 
 .homepage {
@@ -21,10 +27,65 @@ p {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-color: linear-gradient(0deg, #1F2123 0%, #1F2123 35.44%, rgba(31, 33, 35, 0) 148.73%);
+  
 }
+.header{
 
+  padding: 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .logo{
+    margin-left: 2rem;
+  }
+  .header-right{
+    .watch-btn{
+      border: none;
+      background: none;
+      color: #ffffff;
+      font-size: 16px;
+      line-height: 19px;
+      cursor: pointer;
+    }
+  }
+}
+.dropdown{
+  position: absolute;
+  right: 0;
+  top: 2rem;
+  width: fit-content;
+  text-align: center;
+  margin: 2rem;
+  color: #1A1A1A;
+  
+}
+#user-text{
+  position: relative;
+  width:40px;
+  height: 40px;
+  border:none;
+text-align: center;
+ margin: 0 2rem;
+ border-radius: 50%;
+  background-color: #ffffff;
+}
+.sign-out{
+  font-size: 16px;
+  border: none;
+  background-color: #ffffff;
+  border-radius: 4px;
+  margin-top: 1rem;
+  padding: .5rem;
+  &:hover{
+    background-color: #1A1A1A;
+    color: #ffffff;
+    transition: ease-in-out .4s;
+  }
+}
 .searchHeading {
   text-transform: capitalize;
+  margin: 0;
 }
 
 // SEARCH INPUT
@@ -80,12 +141,17 @@ p {
 
 // FILTER
 
+.filter {
+  margin: 15px 0 10px;
+}
+
 .filterSelect {
   display: flex;
 }
 
 .filterOptions {
   display: flex;
+  margin: 0;
   li {
     list-style: none;
     margin: 0 6px;
@@ -116,14 +182,14 @@ p {
     position: relative;
     list-style: none;
     padding: 0;
-    margin: 0 15px 60px 15px;
+    margin: 1rem auto;
     box-shadow: 1px 1px 12px 1px rgba(126, 126, 126, 0.25);
     border-radius: 5px;
     // background: linear-gradient(180deg, #111111 9.88%, rgba(51, 51, 51, 0) 46.7%, #000000 83.06%);
     h3 {
       position: absolute;
       bottom: 45px;
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       text-align: center;
     }
   }
@@ -139,6 +205,8 @@ p {
     opacity: 0.45;
     box-shadow: 1px 1px 12px 1px rgba(126, 126, 126, 0.25);
     border-radius: 5px;
+    width: 100%;
+    height: 100%;
   }
 }
 
@@ -147,12 +215,16 @@ p {
   justify-content: space-between;
   position: absolute;
   top: 10px;
-  z-index: 40;
+  z-index: 10;
+  p {
+    font-size: 0.9rem;
+  }
 }
 
 .detailsButton {
   position: absolute;
   bottom: 25px;
+  font-size: 0.9rem;
 }
 
 .saveButtons button {

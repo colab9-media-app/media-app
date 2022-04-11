@@ -1,12 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import "./styles/sass/index.scss"
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import { UserProvider } from "./contexts/userContext";
+import "./styles/sass/index.scss";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <UserProvider>
+      <App />
+    </UserProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
-
