@@ -14,7 +14,7 @@ const ToWatch = (props) => {
   const { currentUser } = useContext(UserContext);
   const [watchlist, setWatchlist] = useState([]);
   const [noWatchlist, setNoWatchlist] = useState(false);
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   const userDocRef = doc(db, "users", currentUser.uid);
   const collectionRef = collection(userDocRef, "watchlist");
   const [details, setDetails] = useState([]);
@@ -102,7 +102,7 @@ const ToWatch = (props) => {
         : null }
         {watchlist.map((media, index) => {
           return (
-            <li className="result" key={media.id}>
+            <li className="result" key={media.id}  data-aos="zoom-in">
               <ResultsInfo media={watchlist} />
               <div className="posterContainer">
                 <img

@@ -85,7 +85,7 @@ const Watchedlist = () => {
         : null }
         {watchedlist.map((media, index) => {
           return (
-            <li className="result" key={media.id}>
+            <li className="result" key={media.id} data-aos="zoom-in">
               <ResultsInfo media={watchedlist} />
               <div className="posterContainer">
                 <img

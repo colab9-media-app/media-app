@@ -10,6 +10,7 @@ import { useHistory } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 import ToWatch from "../ToWatch/ToWatch";
 import Watched from "../Watched/Watched";
+import Logo from "../../components/Logo/logo";
 
 const Homepage = () => {
   const [showSignOutButton, setShowSignOutButton] = useState(false);
@@ -30,7 +31,8 @@ const Homepage = () => {
     <div className="homepage">
       <div className="header">
         <div className="logo">
-          <img src={logo} alt="logo" />
+          <Logo/>
+          {/* <img src={logo} alt="logo" /> */}
         </div>
         <div className="header-right">
           {display === "Watchlist" || display === "Watched" ? (
