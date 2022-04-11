@@ -1,5 +1,6 @@
-import { faBookmark, faEye } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faBookmark, faEye } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import SaveButtons from '../SaveButtons';
 import logoTMDB from "../../assets/images/logoTMDB.svg";
 import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../contexts/userContext";
@@ -46,14 +47,12 @@ const ResultsInfo = (props) => {
 
   return (
     <div className="resultsInfo">
-      <div className="saveButtons">
-        <button style={{ background: bookmarkColor }} onClick={bookmarkClick}>
-          <FontAwesomeIcon icon={faBookmark} />
-        </button>
-        <button style={{ background: watchedIcon }} onClick={watchedMovie}>
-          <FontAwesomeIcon icon={faEye} />
-        </button>
-      </div>
+      <SaveButtons 
+        watchedIcon={watchedIcon}
+        watchedMovie={watchedMovie}
+        bookmarkColor={bookmarkColor}
+        bookmarkClick={bookmarkClick}
+      />
       <div className="dbInfo">
         <div className="logoContainer">
           <img src={logoTMDB} alt="TMDB logo" />
