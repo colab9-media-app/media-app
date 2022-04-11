@@ -7,6 +7,8 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   sendPasswordResetEmail,
+  signOut,
+  onAuthStateChanged,
 } from "firebase/auth";
 import {
   getFirestore,
@@ -14,21 +16,26 @@ import {
   getDoc,
   getDocs,
   setDoc,
+  documentId,
   collection,
+  addDoc,
   writeBatch,
   query,
+  where,
+  FieldPath,
+  deleteDoc
 } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDHhKXDgUEwkQXiE1SpPrvyBJDs9uIwxmg",
-  authDomain: "media-app-de265.firebaseapp.com",
+  apiKey: process.env.REACT_APP_FIRE_KEY,
+  authDomain: process.env.REACT_APP_FIRE_AUTH_DOMAIN,
   projectId: "media-app-de265",
   storageBucket: "media-app-de265.appspot.com",
   messagingSenderId: "976481831407",
   appId: "1:976481831407:web:bbc01658f420eda0480e1a",
 };
-
+console.log(firebaseConfig);
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
 
@@ -41,7 +48,7 @@ provider.setCustomParameters({
 export const auth = getAuth();
 export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
 
-export const db = getFirestore();
+export const db = getFirestore(firebaseApp);
 
 export const createUserDocumentFromAuth = async (
   userAuth,
@@ -90,3 +97,51 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
 export const forgetPassword = async (email) => {
   return sendPasswordResetEmail(auth, email);
 };
+
+export const signUserOut = async () => await signOut(auth);
+
+export const onAuthStateChangedListener = (callback) => onAuthStateChanged(auth, callback ); 
+
+export const addMovieToWatchList = async (movie, userId) => {
+const movieRef = doc(db, "users", `${userId}/watchlist/${movie.id}`);
+const movieSnapshot = await getDoc(movieRef);
+if(!movieSnapshot.exists()){
+  await setDoc(movieRef, movie);
+
+}
+}
+
+export const getUserWatchList = async (userId) => {
+const userDocRef = doc(db, "users", userId);
+const collectionRef = collection(userDocRef, "watchlist");
+return await getDocs(collectionRef).then(
+  (snapshot) => snapshot.docs.map((doc) => doc.data())  
+);
+}
+
+export const deleteMovieFromWatchList = async (movie, userId)=> {
+  const movieRef = doc(db, "users", `${userId}/watchlist/${movie.id}`);
+  await deleteDoc(movieRef);
+  console.log(movieRef);
+}
+
+export const addMovieToWatchedList = async (movie, userId) => {
+  const movieRef = doc(db, "users", `${userId}/watchedlist/${movie.id}`);
+  const movieSnapshot = await getDoc(movieRef);
+  if(!movieSnapshot.exists()){
+    await setDoc(movieRef, movie);
+  }
+}
+
+export const getUserWatchedList = async (userId) => {
+  const userDocRef = doc(db, "users", userId);
+  const collectionRef = collection(userDocRef, "watchedlist");
+  return await getDocs(collectionRef).then(
+    (snapshot) => snapshot.docs.map((doc) => doc.data())  
+  );
+}
+
+export const deleteMovieFromWatchedList = async (movie, userId)=> {
+  const movieRef = doc(db, "users", `${userId}/watchedlist/${movie.id}`);
+  await deleteDoc(movieRef);
+}

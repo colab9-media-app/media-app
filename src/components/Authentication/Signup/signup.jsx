@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
 import "./signup.scss";
 import FormInput from "../FormInput/form-input";
 import Logo from "../../Logo/logo";
@@ -9,6 +10,7 @@ import {
   createUserDocumentFromAuth,
 } from "../../../utils/firebase/firebase";
 import SignModal from "../../modal/signModal/signModal";
+
 
 
 
@@ -27,6 +29,7 @@ const Signup = () => {
   const [loading, setLoading] = useState(false);
   const [resType, setResType] = useState("");
   const [errMesg, setErrMesg] = useState("");
+  const history = useHistory();
  
 
   const resetFormField = () => {
@@ -53,7 +56,7 @@ const Signup = () => {
         toast.success("Account Created");
         setLoading(false);
         setResType("success");
-        // history.push("./");
+        history.push("./homepage");
       } catch (error) {
         setLoading(false);
         if (error.code === "auth/email-already-in-use") {
