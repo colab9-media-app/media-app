@@ -65,11 +65,9 @@
 }
 .input-box .forgot-link {
   position: absolute;
-  top: 50%;
-  right: 4%;
-  padding-right: 0.5rem;
+  top: 52%;
+  right: 2%;
   color: #fff;
-  font-size: 12px;
   text-decoration: none;
   cursor: pointer;
   text-decoration: none;
