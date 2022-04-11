@@ -15,7 +15,7 @@ const ResultsInfo = (props) => {
   const [eyeColor, setEyeColor] = useState(null);
   const [bookmarkColor, setBookmarkColor] = useState(null);
   const { currentUser } = useContext(UserContext);
-  const [watchedicon, setWatchedicon] = useState(null);
+  const [watchedIcon, setWatchedicon] = useState(null);
 
   const eyeClick = () => {
     eyeColor !== "#1FA5FF" ? setEyeColor("#1FA5FF") : setEyeColor(null);
@@ -30,7 +30,7 @@ const ResultsInfo = (props) => {
   };
 
   const watchedMovie = async () => {
-    watchedicon !== "#1FA5FF"
+    watchedIcon !== "#1FA5FF"
       ? setWatchedicon("#1FA5FF")
       : setWatchedicon(null);
     await addMovieToWatchedList(props.media, currentUser.uid);
@@ -50,7 +50,7 @@ const ResultsInfo = (props) => {
         <button style={{ background: bookmarkColor }} onClick={bookmarkClick}>
           <FontAwesomeIcon icon={faBookmark} />
         </button>
-        <button style={{ background: watchedicon }} onClick={watchedMovie}>
+        <button style={{ background: watchedIcon }} onClick={watchedMovie}>
           <FontAwesomeIcon icon={faEye} />
         </button>
       </div>

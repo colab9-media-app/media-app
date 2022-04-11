@@ -5,8 +5,6 @@ import DetailsCard from "./DetailsCard/DetailsCard.js";
 
 const Results = (props) => {
   const [show, setShow] = useState(false);
-  const [index, setIndex] = useState("");
-  const [mediaID, setMediaID] = useState("");
   const [details, setDetails] = useState([]);
   const [detailsError, setDetailsError] = useState(false);
 
@@ -64,16 +62,14 @@ const Results = (props) => {
         </div>
       ) : (
         <ul className="resultContainer">
-          {show ? (
+          { show ? 
             <DetailsCard
               show={show}
               setShow={setShow}
-              // index={index}
-              // id={mediaID}
               details={details}
               error={detailsError}
             />
-          ) : null}
+          : null }
           {props.result.map((media, index) => {
             return (
               <li className="result" key={media.id}>
