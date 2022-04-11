@@ -1,4 +1,5 @@
 import "./detailsCard.css";
+import SaveButtons from '../../SaveButtons';
 import logoTMDB from "../../../assets/images/logoOneLineTMDB.svg";
 import moment from "moment";
 
@@ -11,6 +12,9 @@ const DetailsCard = ({ show, setShow, details, detailsError }) => {
       <div className="cardInfo">
         <div className="cardLeft">
           <div className="poster">
+            <div className="detailsSave">
+              <SaveButtons />
+            </div>
             <img
               src={`https://image.tmdb.org/t/p/w500/${details.poster_path}`}
               alt={`Poster for ${details.original_title}`}
@@ -35,21 +39,21 @@ const DetailsCard = ({ show, setShow, details, detailsError }) => {
           </ul>
           {details.seasons ? (
             <div className="numberDetails">
-              <div className="seasonNum">
-                <h4>N° of seasons</h4>
-                <p>{details.number_of_seasons}</p>
-              </div>
-              <div className="episodeNum">
-                <h4>N° of episodes</h4>
-                <p>{details.number_of_episodes}</p>
+              <div className="numOf">
+                <div className="seasonNum">
+                  <h4>N° of seasons</h4>
+                  <p>{details.number_of_seasons}</p>
+                </div>
+                <div className="episodeNum">
+                  <h4>N° of episodes</h4>
+                  <p>{details.number_of_episodes}</p>
+                </div>
               </div>
               {details.next_episode_to_air !== null ? (
-                <div className="airDate">
+                <div className="airdate">
                   <h4>Next episode airing</h4>
                   <p>
-                    {moment(details.next_episode_to_air.air_date).format(
-                      "MMMM D, YYYY"
-                    )}
+                    {moment(details.next_episode_to_air.air_date).format( "MMM D, YYYY")}
                   </p>
                 </div>
               ) : null}
