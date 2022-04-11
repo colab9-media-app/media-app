@@ -16,13 +16,13 @@ p {
 
 .homepage {
   min-height: 100vh;
-  background-image: url(../../assets/images/dunkirk.png);
+  background-image: linear-gradient(0deg, #1F2123 0%, #1F2123 35.44%, rgba(31, 33, 35, 0) 148.73%), url(../../assets/images/dunkirk.png);
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  // background-color: linear-gradient(0deg, #1F2123 0%, #1F2123 35.44%, rgba(31, 33, 35, 0) 148.73%);
-  
+  background-color: linear-gradient(0deg, #1F2123 0%, #1F2123 35.44%, rgba(31, 33, 35, 0) 148.73%);
+
 }
 .header{
 
@@ -90,20 +90,45 @@ text-align: center;
 }
 
 .userSearch {
-  // width: 100%;
-
+  position: relative;
+  background: rgb(38, 65, 65);
+  opacity: 0.6;
+  padding: 6px 40px 6px 6px;
+  border-radius: 30px;
+  // background: #999999;
+  box-shadow: 0px 3px 7px rgba(90, 89, 89, 0.15);
   input {
-    background: darkslategrey;
+    background: rgb(22, 22, 22);
     color: white;
-    // opacity: 0.5;
     padding: 6px 15px;
     border: white;
     box-shadow: 0px 3px 7px rgba(185, 185, 185, 0.15);
     border-radius: 30px;
     &::placeholder {
       color: white;
-      opacity: 0.5;
+      opacity: 0.7;
     }
+    &:focus {
+      outline: 0;
+    }
+  }
+}
+
+.userSearch input:focus + button i {
+  color: white;
+}
+
+.searchButton {
+  border: none;
+  background: none;
+  position: absolute;
+  right: 6px;
+  top: 13px;
+  &:active i, &:focus i {
+    color: white;
+  }
+  i {
+    color:rgb(8, 8, 8);
   }
 }
 
@@ -115,17 +140,15 @@ text-align: center;
 
 .filterOptions {
   display: flex;
-
   li {
     list-style: none;
-
+    margin: 0 6px;
     button {
       border: none;
       background: inherit;
       color: white;
       opacity: 0.6;
-
-      &:hover {
+      &:hover, &:focus {
         opacity: 1;
       }
     }
@@ -150,11 +173,11 @@ text-align: center;
     margin: 1rem auto;
     box-shadow: 1px 1px 12px 1px rgba(126, 126, 126, 0.25);
     border-radius: 5px;
-    background: linear-gradient(180deg, #111111 9.88%, rgba(51, 51, 51, 0) 46.7%, #000000 83.06%);
+    // background: linear-gradient(180deg, #111111 9.88%, rgba(51, 51, 51, 0) 46.7%, #000000 83.06%);
     h3 {
       position: absolute;
       bottom: 45px;
-      font-size: 2rem;
+      font-size: 1.5rem;
       text-align: center;
     }
   }
@@ -165,7 +188,7 @@ text-align: center;
   border-radius: 5px;
   height: 400px;
   width: 350px;
-  background: linear-gradient(180deg, #111111 9.88%, rgba(51, 51, 51, 0) 46.7%, #000000 83.06%);
+  // background: linear-gradient(180deg, #111111 9.88%, rgba(51, 51, 51, 0) 46.7%, #000000 83.06%);
   img {
     opacity: 0.45;
     box-shadow: 1px 1px 12px 1px rgba(126, 126, 126, 0.25);
@@ -191,7 +214,6 @@ text-align: center;
 .saveButtons button {
   border: none;
   border-radius: 50%;
-  // background-color: $highlight;
   padding: 6px;
   margin: 0 10px;
   background-color: rgba(255, 255, 255, 0.1);

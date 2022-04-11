@@ -62,7 +62,7 @@ const MediaSearch = () => {
     setUserInput(e.target.value);
   };
 
-  return (
+ return (
     <div className="searchPage">
       <form className="search" action="" onSubmit={handleSubmit}>
         <SearchInput change={handleChange} value={userInput} />
@@ -81,3 +81,4 @@ const MediaSearch = () => {
 };
 
 export default MediaSearch;
+
