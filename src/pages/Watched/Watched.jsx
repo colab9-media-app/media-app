@@ -1,9 +1,15 @@
 import axios from "axios";
+import { toast } from "react-toastify";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ResultsInfo from "../../components/Search/ResultsInfo";
 import DetailsCard from "../../components/Search/DetailsCard/DetailsCard";
 import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../contexts/userContext";
-import { getUserWatchedList, db } from "../../utils/firebase/firebase";
+import {
+  getUserWatchedList,
+  deleteMovieFromWatchedList,
+} from "../../utils/firebase/firebase";
 
 const Watchedlist = () => {
   const { currentUser } = useContext(UserContext);
@@ -13,18 +19,25 @@ const Watchedlist = () => {
   const [details, setDetails] = useState([]);
   const [detailsError, setDetailsError] = useState(false);
 
+  const handleFetchUsersWatchedlist = () => {
+    getUserWatchedList(currentUser.uid).then((res) => {
+      setWatchedlist(res);
+      if (res.length === 0) {
+        setNoWatchedlist(true);
+      }
+    });
+  };
+  const handleDeleteMovie = async (media) => {
+    await deleteMovieFromWatchedList(media, currentUser.uid);
+    toast.info("Movie removed from watched list");
+    await handleFetchUsersWatchedlist();
+  };
+
   useEffect(() => {
     if (currentUser) {
-      getUserWatchedList(currentUser.uid).then((res) => {
-        setWatchedlist(res);
-        if (res.length === 0) {
-          setNoWatchedlist(true);
-        }
-      });
+      handleFetchUsersWatchedlist();
     }
   }, []);
-
-  
 
   const runDetailsSearch = (id, index) => {
     if (watchedlist[index].media_type === "movie") {
@@ -75,18 +88,18 @@ const Watchedlist = () => {
     <>
       {noWatchedlist ? <h3>You currently don't have a watched list</h3> : null}
       <ul className="resultContainer">
-        { show ? 
+        {show ? (
           <DetailsCard
             show={show}
             setShow={setShow}
             details={details}
             error={detailsError}
           />
-        : null }
+        ) : null}
         {watchedlist.map((media, index) => {
           return (
-            <li className="result" key={media.id}>
-              <ResultsInfo media={watchedlist} />
+            <li className="result" key={media.id} data-aos="zoom-in">
+              <ResultsInfo media={media} />
               <div className="posterContainer">
                 <img
                   src={`https://image.tmdb.org/t/p/w500/${media.poster_path}`}
@@ -94,7 +107,24 @@ const Watchedlist = () => {
                 />
               </div>
               {media.title ? <h3>{media.title}</h3> : <h3>{media.name}</h3>}
-              <button className="detailsButton" onClick={() => {runDetailsSearch(media.id, index)}}>See Details</button>
+              <div className="deet-delete-btn">
+                <button
+                  className="watchDetailsButton"
+                  onClick={() => {
+                    runDetailsSearch(media.id, index);
+                  }}
+                >
+                  See Details
+                </button>
+                <button
+                  className="deleteButton"
+                  onClick={() => {
+                    handleDeleteMovie(media);
+                  }}
+                >
+                  <FontAwesomeIcon icon={faTrashCan} />
+                </button>
+              </div>
             </li>
           );
         })}

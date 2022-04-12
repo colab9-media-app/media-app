@@ -1,4 +1,5 @@
 import { async } from "@firebase/util";
+import { toast } from "react-toastify";
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
@@ -16,13 +17,7 @@ import {
   getDoc,
   getDocs,
   setDoc,
-  documentId,
   collection,
-  addDoc,
-  writeBatch,
-  query,
-  where,
-  FieldPath,
   deleteDoc
 } from "firebase/firestore";
 
@@ -105,10 +100,30 @@ export const onAuthStateChangedListener = (callback) => onAuthStateChanged(auth,
 export const addMovieToWatchList = async (movie, userId) => {
 const movieRef = doc(db, "users", `${userId}/watchlist/${movie.id}`);
 const movieSnapshot = await getDoc(movieRef);
+const movieToWatchedListSnapshot = await getDoc(doc(db, "users", `${userId}/watchedlist/${movie.id}`));
+if (movieToWatchedListSnapshot.exists()) {
+  toast.error("Movie already in watched list");
+  return;
+}
 if(!movieSnapshot.exists()){
   await setDoc(movieRef, movie);
-
+ 
 }
+}
+
+export const addMovieToWatchedList = async (movie, userId) => {
+  console.log(movie);
+  const movieRef = doc(db, "users", `${userId}/watchedlist/${movie.id}`);
+  const movieSnapshot = await getDoc(movieRef);
+  const movieWatchListSnapshot = await getDoc(doc(db, "users", `${userId}/watchlist/${movie.id}`));
+  if (movieWatchListSnapshot.exists()){
+    toast.error("Movie already in watchlist");
+    return;
+  }
+  if(!movieSnapshot.exists()){
+    await setDoc(movieRef, movie);
+  
+  }
 }
 
 export const getUserWatchList = async (userId) => {
@@ -122,16 +137,10 @@ return await getDocs(collectionRef).then(
 export const deleteMovieFromWatchList = async (movie, userId)=> {
   const movieRef = doc(db, "users", `${userId}/watchlist/${movie.id}`);
   await deleteDoc(movieRef);
-  console.log(movieRef);
+  
 }
 
-export const addMovieToWatchedList = async (movie, userId) => {
-  const movieRef = doc(db, "users", `${userId}/watchedlist/${movie.id}`);
-  const movieSnapshot = await getDoc(movieRef);
-  if(!movieSnapshot.exists()){
-    await setDoc(movieRef, movie);
-  }
-}
+
 
 export const getUserWatchedList = async (userId) => {
   const userDocRef = doc(db, "users", userId);
@@ -144,4 +153,5 @@ export const getUserWatchedList = async (userId) => {
 export const deleteMovieFromWatchedList = async (movie, userId)=> {
   const movieRef = doc(db, "users", `${userId}/watchedlist/${movie.id}`);
   await deleteDoc(movieRef);
+  
 }
