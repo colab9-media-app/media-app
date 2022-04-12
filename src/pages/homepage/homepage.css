@@ -226,6 +226,10 @@ h2, h3 {
   font-weight: 700;
 }
 
+h2 {
+  font-size: 1.2rem;
+}
+
 p {
   margin: 0;
   padding: 0;
@@ -377,11 +381,10 @@ p {
 .filterOptions li button {
   border: none;
   background: inherit;
-  color: white;
-  opacity: 0.6;
+  color: #999999;
 }
 .filterOptions li button:hover, .filterOptions li button:focus {
-  opacity: 1;
+  color: white;
 }
 
 .resultContainer {
@@ -483,4 +486,12 @@ p {
   background-color: #1FA5FF;
   color: white;
   border-radius: 70px;
+}
+
+.errorMessage h3 {
+  font-size: 0.9rem;
+  color: #CCCCCC;
+}
+.errorMessage p {
+  color: #999999;
 }/*# sourceMappingURL=homepage.css.map */

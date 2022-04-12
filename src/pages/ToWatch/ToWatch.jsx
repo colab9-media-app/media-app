@@ -14,7 +14,7 @@ const ToWatch = (props) => {
   const { currentUser } = useContext(UserContext);
   const [watchlist, setWatchlist] = useState([]);
   const [noWatchlist, setNoWatchlist] = useState(false);
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   const userDocRef = doc(db, "users", currentUser.uid);
   const collectionRef = collection(userDocRef, "watchlist");
   const [details, setDetails] = useState([]);
