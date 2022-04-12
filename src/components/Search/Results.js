@@ -72,7 +72,7 @@ const Results = (props) => {
           : null }
           {props.result.map((media, index) => {
             return (
-              <li className="result" key={media.id}>
+              <li className="result" key={media.id} data-aos="zoom-in">
                 <ResultsInfo media={media} />
                 <div className="posterContainer">
                   <img
