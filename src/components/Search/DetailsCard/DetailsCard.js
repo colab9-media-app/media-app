@@ -1,9 +1,29 @@
 import "./detailsCard.css";
-import SaveButtons from '../../SaveButtons';
+import SaveButtons from "../../SaveButtons";
 import logoTMDB from "../../../assets/images/logoOneLineTMDB.svg";
+import {
+  addMovieToWatchList,
+  addMovieToWatchedList,
+} from "../../../utils/firebase/firebase";
 import moment from "moment";
+import { useState, useContext } from "react";
+import { UserContext } from "../../../contexts/userContext";
+
+import { toast } from "react-toastify";
 
 const DetailsCard = ({ show, setShow, details, detailsError }) => {
+  const { currentUser } = useContext(UserContext);
+
+  const bookmarkClick = async () => {
+    await addMovieToWatchList(details, currentUser.uid);
+    toast.success("Movie added to watchlist");
+  };
+
+  const watchedMovie = async () => {
+    await addMovieToWatchedList(details, currentUser.uid);
+    toast.success("Movie added to watched list");
+  };
+
   return !show ? null : (
     <div className="modal">
       <button className="closeButton" onClick={() => setShow(false)}>
@@ -53,7 +73,9 @@ const DetailsCard = ({ show, setShow, details, detailsError }) => {
                 <div className="airdate">
                   <h4>Next episode airing</h4>
                   <p>
-                    {moment(details.next_episode_to_air.air_date).format( "MMM D, YYYY")}
+                    {moment(details.next_episode_to_air.air_date).format(
+                      "MMM D, YYYY"
+                    )}
                   </p>
                 </div>
               ) : null}
@@ -74,8 +96,8 @@ const DetailsCard = ({ show, setShow, details, detailsError }) => {
           <p>{details.vote_average}</p>
         </div>
         <div className="right">
-          <button>Add to Watchlist</button>
-          <button>Already Watched</button>
+          <button onClick={() => bookmarkClick()}>Add to Watchlist</button>
+          <button onClick={() => watchedMovie()}>Already Watched</button>
         </div>
       </div>
     </div>

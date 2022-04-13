@@ -2,10 +2,10 @@ import MediaSearch from "../../components/Search/MediaSearch";
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { UserContext } from "../../contexts/userContext";
 import "./homepage.scss";
-import { signUserOut } from "../../utils/firebase/firebase";
+import { signUserOut, getSearchHistory } from "../../utils/firebase/firebase";
 import { useHistory } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 import ToWatch from "../ToWatch/ToWatch";
@@ -16,22 +16,23 @@ const Homepage = () => {
   const [showSignOutButton, setShowSignOutButton] = useState(false);
   const [display, setDisplay] = useState("MediaSearch");
   const history = useHistory();
-  const { currentUser } = useContext(UserContext);
+  const { currentUser, fecthSearchedMovies } = useContext(UserContext);
 
   const showButton = () => {
     setShowSignOutButton(!showSignOutButton);
   };
-  const signOutHandler = () => {
-    signUserOut();
-    // setCurrentUser(null);
-    history.push("/");
-  };
+
+  useEffect(() => {
+    (async () => {
+      await fecthSearchedMovies(currentUser.uid);
+    })();
+  }, []);
 
   return (
     <div className="homepage">
       <div className="header">
         <div className="logo">
-          <Logo/>
+          <Logo />
           {/* <img src={logo} alt="logo" /> */}
         </div>
         <div className="header-right">
@@ -58,7 +59,7 @@ const Homepage = () => {
           <br />
           <div className="dropdown">
             {showSignOutButton && (
-              <button className="sign-out" onClick={signOutHandler}>
+              <button className="sign-out" onClick={() => signUserOut(history)}>
                 Sign Out <FontAwesomeIcon icon={faRightFromBracket} />
               </button>
             )}

@@ -1,18 +1,24 @@
 import axios from "axios";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect, useLayoutEffect } from "react";
 import SearchInput from "./SearchInput";
 import Results from "./Results";
 import Filter from "./Filter";
 
 import { UserContext } from "../../contexts/userContext";
+import {
+  saveSearchText,
+  getSearchHistory,
+} from "../../utils/firebase/firebase";
 
 const MediaSearch = () => {
+  const { currentUser, searchedMovies } = useContext(UserContext);
   const [data, setData] = useState([]);
   const [mediaResult, setMediaResult] = useState([]);
   const [userInput, setUserInput] = useState("");
   const [errorStatus, setErrorStatus] = useState(false);
   const [searchHeading, setSearchHeading] = useState(null);
-  const { currentUser } = useContext(UserContext);
+
+  // const {searchQuery, searchResult} = JSON.parse(window.sessionStorage.getItem("searchDetails") ? window.sessionStorage.getItem("searchDetails") : "{searchQuery:'',searchResults:''}");
 
   const runSearch = () => {
     if (userInput !== "") {
@@ -39,7 +45,7 @@ const MediaSearch = () => {
             });
             setData(filteredData);
             setMediaResult(filteredData);
-            console.log(mediaResult);
+            saveSearchText(userInput, currentUser.uid);
           } else {
             throw Error();
           }
@@ -62,7 +68,13 @@ const MediaSearch = () => {
     setUserInput(e.target.value);
   };
 
- return (
+  useEffect(() => {
+    if (searchedMovies.length > 0) {
+      setMediaResult(searchedMovies);
+    }
+  }, [searchedMovies]);
+
+  return (
     <div className="searchPage">
       <form className="search" action="" onSubmit={handleSubmit}>
         <SearchInput change={handleChange} value={userInput} />
@@ -80,4 +92,3 @@ const MediaSearch = () => {
 };
 
 export default MediaSearch;
-

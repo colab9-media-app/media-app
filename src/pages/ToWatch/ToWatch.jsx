@@ -9,7 +9,7 @@ import {
   db,
   deleteMovieFromWatchList,
 } from "../../utils/firebase/firebase";
-import {collection, doc } from "firebase/firestore";
+import { collection, doc } from "firebase/firestore";
 import DetailsCard from "../../components/Search/DetailsCard/DetailsCard";
 import { toast } from "react-toastify";
 
@@ -56,7 +56,6 @@ const ToWatch = (props) => {
         .then((res) => {
           if (res.status === 200) {
             setDetails(res.data);
-            console.log(res.data);
           } else {
             throw Error();
           }
@@ -76,7 +75,6 @@ const ToWatch = (props) => {
         .then((res) => {
           if (res.status === 200) {
             setDetails(res.data);
-            console.log(res.data);
           } else {
             throw Error();
           }

@@ -23,11 +23,14 @@ h4 {
   border: none;
   font-weight: bold;
 }
+
 .closeButton:hover {
   color: white;
 }
 
 .cardInfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -36,9 +39,11 @@ h4 {
   width: 40%;
   height: 100%;
 }
+
 .cardLeft .poster {
   position: relative;
 }
+
 .cardLeft .poster img {
   -o-object-fit: cover;
      object-fit: cover;
@@ -50,65 +55,88 @@ h4 {
   top: 14px;
   left: -16px;
   z-index: 50;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
 .cardRight {
-  flex: 0 2 auto;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 2 auto;
+          flex: 0 2 auto;
 }
+
 .cardRight h3 {
   margin-top: 0;
   font-size: 1.3rem;
 }
+
 .cardRight h4 {
   font-size: 0.9rem;
   padding-right: 30px;
 }
+
 .cardRight p {
   color: #CCCCCC;
   line-height: 1.35;
 }
 
 .genre {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   padding: 0;
 }
+
 .genre li {
   list-style: none;
   font-size: 0.8rem;
 }
+
 .genre li:not(:last-child)::after {
-  content: "-";
+  content: '-';
   padding: 0 7px;
 }
 
 .dateDetails {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin-top: 25px;
 }
+
 .dateDetails h4 {
   margin: 0;
 }
 
 .cardBottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin-top: 26px;
 }
 
 .left {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 30%;
 }
+
 .left .logoContainer {
   width: 54%;
 }
+
 .left p {
   font-size: 0.9rem;
 }
 
 .right {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
+
 .right button {
   background: none;
   border: 1px solid white;
@@ -119,33 +147,46 @@ h4 {
 }
 
 .tvTitle {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
+
 .tvTitle h3 {
   margin-right: 25px;
 }
+
 .tvTitle p {
   line-height: 1.9;
 }
 
 .seasonNum, .episodeNum {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin-right: 25px;
 }
 
 .numOf {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin-top: 22px;
 }
+
 .numOf h4 {
   margin: 0;
   padding-right: 15px;
 }
 
 .airdate {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin-top: 22px;
 }
+
 .airdate h4 {
   margin: 0;
-}/*# sourceMappingURL=detailsCard.css.map */
+}
+/*# sourceMappingURL=detailsCard.css.map */

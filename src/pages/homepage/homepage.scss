@@ -174,7 +174,8 @@ p {
       border: none;
       background: inherit;
       color: #999999;
-      &:hover, &:focus {
+      &:hover,
+      &:focus {
         color: white;
       }
     }
@@ -316,16 +317,32 @@ p {
   color: $highlight;
 }
 
-
 // ERROR MESSAGE
 
 .errorMessage {
   h3 {
     font-size: 0.9rem;
-    color: #CCCCCC;
+    color: #cccccc;
   }
   p {
     color: #999999;
   }
+}
 
+@media screen and (max-width: 768px) {
+  .resultContainer {
+    margin-left: -2rem;
+  }
+  .posterContainer {
+    height: 300px;
+    width: 250px;
+    margin: 0 auto !important;
+    img {
+      width: 100% !important;
+      height: 100% !important;
+    }
+  }
+  .result {
+    margin: 1rem auto !important;
+  }
 }
