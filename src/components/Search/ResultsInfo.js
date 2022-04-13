@@ -38,7 +38,7 @@ const ResultsInfo = (props) => {
   const watchedMovie = async () => {
     await addMovieToWatchedList(props.media, currentUser.uid);
     await isMovieInWatchList();
-    toast.success("Movie added to watched list");
+    toast.success("Movie marked as watched");
   };
   const isMovieInWatchedList = async () => {
     const movieRef = doc(

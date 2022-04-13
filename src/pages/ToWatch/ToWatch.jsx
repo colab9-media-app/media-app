@@ -33,7 +33,7 @@ const ToWatch = (props) => {
   };
   const handleDeleteMovie = async (media) => {
     await deleteMovieFromWatchList(media, currentUser.uid);
-    toast.info("Movie removed from watchlist");
+    toast.error("Movie removed from watchlist");
     await handleFetchUserswatchlist();
   };
 
