@@ -109,7 +109,7 @@ export const addMovieToWatchList = async (movie, userId) => {
     doc(db, "users", `${userId}/watchedlist/${movie.id}`)
   );
   if (movieToWatchedListSnapshot.exists()) {
-    toast.error("Movie already in watched list");
+    // toast.error("Movie already in watched list");
     return;
   }
   if (!movieSnapshot.exists()) {
@@ -125,7 +125,7 @@ export const addMovieToWatchedList = async (movie, userId) => {
     doc(db, "users", `${userId}/watchlist/${movie.id}`)
   );
   if (movieWatchListSnapshot.exists()) {
-    toast.error("Movie already in watchlist");
+    // toast.error("Movie already in watchlist");
     return;
   }
   if (!movieSnapshot.exists()) {
@@ -182,3 +182,29 @@ export const saveSearchText = async (searchText, userId) => {
     await setDoc(userHistoryRef, { searchTexts: [searchText] });
   }
 };
+
+export const switchMovieToWatchedList = async (movie, userId) => {
+  const movieRef = doc(db, "users", `${userId}/watchlist/${movie.id}`);
+  const movieSnapshot = await getDoc(movieRef);
+  const movieWatchedListSnapshot = await getDoc(
+    doc(db, "users", `${userId}/watchedlist/${movie.id}`)
+  );
+  if (!movieWatchedListSnapshot.exists()) {
+    await setDoc(doc(db, "users", `${userId}/watchedlist/${movie.id}`), movie);
+    await deleteDoc(movieRef);
+  }
+    return;
+  };
+
+  export const switchMovieToWatchList = async (movie, userId) => {
+    const movieRef = doc(db, "users", `${userId}/watchedlist/${movie.id}`);
+    const movieSnapshot = await getDoc(movieRef);
+    const movieWatchListSnapshot = await getDoc(
+      doc(db, "users", `${userId}/watchlist/${movie.id}`)
+    );
+    if (!movieWatchListSnapshot.exists()) {
+      await setDoc(doc(db, "users", `${userId}/watchlist/${movie.id}`), movie);
+      await deleteDoc(movieRef);
+    }
+      return;
+    }

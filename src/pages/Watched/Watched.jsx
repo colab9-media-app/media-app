@@ -33,11 +33,7 @@ const Watchedlist = () => {
     await handleFetchUsersWatchedlist();
   };
 
-  useEffect(() => {
-    if (currentUser) {
-      handleFetchUsersWatchedlist();
-    }
-  }, []);
+ 
 
   const runDetailsSearch = (id, index) => {
     if (watchedlist[index].media_type === "movie") {
@@ -52,7 +48,6 @@ const Watchedlist = () => {
         .then((res) => {
           if (res.status === 200) {
             setDetails(res.data);
-            console.log(res.data);
           } else {
             throw Error();
           }
@@ -72,7 +67,6 @@ const Watchedlist = () => {
         .then((res) => {
           if (res.status === 200) {
             setDetails(res.data);
-            console.log(res.data);
           } else {
             throw Error();
           }
@@ -83,6 +77,12 @@ const Watchedlist = () => {
     }
     setShow(true);
   };
+
+  useEffect(() => {
+    if (currentUser) {
+      handleFetchUsersWatchedlist();
+    }
+  }, [watchedlist]);
 
   return (
     <>
