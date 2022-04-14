@@ -1,17 +1,3 @@
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  border: 0;
-  padding: 0;
-  white-space: nowrap;
-  -webkit-clip-path: inset(100%);
-          clip-path: inset(100%);
-  clip: rect(0 0 0 0);
-  overflow: hidden;
-}
-
 html {
   font-size: 125%;
 }
@@ -20,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  background: #1f2123;
+  background: rgb(31, 33, 35);
   color: white;
 }
 
@@ -33,5 +19,4 @@ body {
 .searchPage img {
   width: 100%;
   height: 100%;
-}
-/*# sourceMappingURL=index.css.map */
+}/*# sourceMappingURL=index.css.map */
