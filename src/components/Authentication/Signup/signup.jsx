@@ -1,4 +1,5 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
+import { UserContext } from "../../../contexts/userContext";
 import { useHistory } from "react-router-dom";
 import "./signup.scss";
 import FormInput from "../FormInput/form-input";
@@ -30,6 +31,7 @@ const Signup = () => {
   const [resType, setResType] = useState("");
   const [errMesg, setErrMesg] = useState("");
   const history = useHistory();
+  const { authenticated } = useContext(UserContext);
  
 
   const resetFormField = () => {
@@ -56,7 +58,7 @@ const Signup = () => {
         toast.success("Account Created");
         setLoading(false);
         setResType("success");
-        history.push("./homepage");
+        window.location.href="/homepage";
       } catch (error) {
         setLoading(false);
         if (error.code === "auth/email-already-in-use") {
@@ -79,6 +81,11 @@ const Signup = () => {
     const name = target.name;
     setFormFields((prev) => ({ ...prev, [name]: value }));
   };
+  useEffect(() => {
+    if (authenticated) {
+      history.push("/homepage");
+    }
+    }, [authenticated]);
 
   return (
     <div className="signin-container">

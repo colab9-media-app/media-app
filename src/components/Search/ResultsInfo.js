@@ -1,5 +1,6 @@
 // import { faBookmark, faEye } from "@fortawesome/free-solid-svg-icons";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { getDoc, doc } from "firebase/firestore";
 import SaveButtons from "../SaveButtons";
 import logoTMDB from "../../assets/images/logoTMDB.svg";
 import { useState, useContext, useEffect } from "react";
@@ -7,6 +8,7 @@ import { UserContext } from "../../contexts/userContext";
 import {
   addMovieToWatchList,
   addMovieToWatchedList,
+  db,
 } from "../../utils/firebase/firebase";
 import { toast } from "react-toastify";
 
@@ -16,21 +18,49 @@ const ResultsInfo = (props) => {
   const { currentUser } = useContext(UserContext);
   const [watchedIcon, setWatchedicon] = useState(null);
 
-  const eyeClick = () => {
-    eyeColor !== "#1FA5FF" ? setEyeColor("#1FA5FF") : setEyeColor(null);
-  };
-  // console.log(currentUser);
   const bookmarkClick = async () => {
-    setBookmarkColor("#1FA5FF");
     await addMovieToWatchList(props.media, currentUser.uid);
+    toast.success("Movie added to watchlist");
   };
 
+  const isMovieInWatchList = async () => {
+    const movieRef = doc(
+      db,
+      "users",
+      `${currentUser.uid}/watchlist/${props.media.id}`
+    );
+    const movieSnapshot = await getDoc(movieRef);
+    if (movieSnapshot.exists()) {
+      setBookmarkColor("#1FA5FF");
+    }
+    return;
+  };
   const watchedMovie = async () => {
-    setWatchedicon("#1FA5FF");
     await addMovieToWatchedList(props.media, currentUser.uid);
+    await isMovieInWatchList();
+    toast.success("Movie marked as watched");
+  };
+  const isMovieInWatchedList = async () => {
+    const movieRef = doc(
+      db,
+      "users",
+      `${currentUser.uid}/watchedlist/${props.media.id}`
+    );
+    const movieSnapshot = await getDoc(movieRef);
+    if (movieSnapshot.exists()) {
+      setWatchedicon("#1FA5FF");
+    }
+    return;
   };
 
   const { vote_average } = props.media;
+
+  useEffect(() => {
+    (async () => {
+      await isMovieInWatchList();
+      await isMovieInWatchedList();
+    })();
+  }, []);
 
   return (
     <div className="resultsInfo">

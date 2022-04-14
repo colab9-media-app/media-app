@@ -3,7 +3,8 @@ import google from "../../../assets/icons/google.svg";
 import "./signin.scss";
 import FormInput from "../FormInput/form-input";
 import CustomButton from "../CustomButton/custom-button";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
+import { UserContext } from "../../../contexts/userContext";
 import { Link } from "react-router-dom";
 import {
   signInWithGooglePopup,
@@ -24,6 +25,7 @@ const Signin = () => {
   const { email, password } = formFields;
   const history = useHistory();
   const [errormessage, setErrorMessage] = useState(false);
+  const {authenticated} = useContext(UserContext);
   
 
 
@@ -32,9 +34,8 @@ const Signin = () => {
   };
 
   const logGoogleuser = async () => {
-    signInWithGooglePopup();
-    toast.success("Welcome Back");
-      history.push("./homepage");
+    await signInWithGooglePopup();
+    window.location.href="/homepage";
   };
 
   const handleSubmit = async (e) => {
@@ -45,8 +46,7 @@ const Signin = () => {
         password
       );
       resetFormField();
-      toast.success("Welcome Back");
-      history.push("./homepage");
+      window.location.href="/homepage";
     } catch (error) {
       switch (error.code) {
         case "auth/user-not-found":
@@ -71,6 +71,13 @@ const Signin = () => {
 
     setFormFields({ ...formFields, [name]: value });
   };
+
+useEffect(() => {
+if (authenticated) {
+  history.push("/homepage");
+}
+}, [authenticated]);
+// console.log(history)
 
   return (
     <div className="signin-container">

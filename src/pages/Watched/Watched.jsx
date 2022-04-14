@@ -29,7 +29,7 @@ const Watchedlist = () => {
   };
   const handleDeleteMovie = async (media) => {
     await deleteMovieFromWatchedList(media, currentUser.uid);
-    toast.info("Movie removed from watched list");
+    toast.error("Movie unmarked as watched");
     await handleFetchUsersWatchedlist();
   };
 
