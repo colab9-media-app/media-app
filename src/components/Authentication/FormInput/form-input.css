@@ -1,7 +1,6 @@
 .group {
-  margin: .5rem auto;
+  margin: 0.5rem auto;
 }
-
 .group .form-input {
   width: 90%;
   margin: 1rem auto;
@@ -9,15 +8,13 @@
   border-radius: 13px;
   outline: none;
   border: none;
-  background-color: #B9B9B926;
+  background-color: rgba(185, 185, 185, 0.1490196078);
   color: #fff;
   font-size: 15px;
 }
-
 .group .form-input-label {
-  padding-bottom: .2rem;
+  padding-bottom: 0.2rem;
   text-align: left;
   color: #ffffff;
   font-size: 15px;
-}
-/*# sourceMappingURL=form-input.css.map */
+}/*# sourceMappingURL=form-input.css.map */

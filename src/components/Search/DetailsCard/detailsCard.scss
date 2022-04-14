@@ -1,9 +1,9 @@
+@import '../../../styles/sass/normalize';
 
 .modal {
   width: 65%;
   min-height: 400px;
-  // height: 50vh;
-  // margin: 0 auto;
+  max-height: 600px;
   padding: 40px;
   background: black;
   color: white;
@@ -35,7 +35,6 @@ h4 {
 }
 
 .cardLeft {
-  // padding: 8px;
   margin-right: 40px;
   width: 40%;
   height: 100%;
