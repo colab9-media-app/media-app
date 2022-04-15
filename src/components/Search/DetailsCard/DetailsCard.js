@@ -4,25 +4,67 @@ import logoTMDB from "../../../assets/images/logoOneLineTMDB.svg";
 import {
   addMovieToWatchList,
   addMovieToWatchedList,
+  db,
+  switchMovieToWatchList,
+  switchMovieToWatchedList,
 } from "../../../utils/firebase/firebase";
+import { doc, getDoc } from "firebase/firestore";
 import moment from "moment";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../../contexts/userContext";
 
 import { toast } from "react-toastify";
 
 const DetailsCard = ({ show, setShow, details, detailsError }) => {
   const { currentUser } = useContext(UserContext);
+  const [bookmarkColor, setBookmarkColor] = useState(null);
+  const [watchedIcon, setWatchedicon] = useState(null);
+  const [border, setBorder] = useState(null);
 
   const bookmarkClick = async () => {
     await addMovieToWatchList(details, currentUser.uid);
+    await switchMovieToWatchList(details, currentUser.uid);
     toast.success("Movie added to watchlist");
   };
 
   const watchedMovie = async () => {
     await addMovieToWatchedList(details, currentUser.uid);
+    await switchMovieToWatchedList(details, currentUser.uid);
     toast.success("Movie added to watched list");
   };
+  const isMovieInWatchList = async () => {
+    const movieRef = doc(
+      db,
+      "users",
+      `${currentUser.uid}/watchlist/${details.id}`
+    );
+    const movieSnapshot = await getDoc(movieRef);
+    if (movieSnapshot.exists()) {
+      setBookmarkColor("#1FA5FF");
+      setBorder("none");
+    }
+    return;
+  };
+
+  const isMovieInWatchedList = async () => {
+    const movieRef = doc(
+      db,
+      "users",
+      `${currentUser.uid}/watchedlist/${details.id}`
+    );
+    const movieSnapshot = await getDoc(movieRef);
+    if (movieSnapshot.exists()) {
+      setWatchedicon("#1FA5FF");
+      setBorder("none");
+    }
+    return;
+  };
+  useEffect(() => {
+    (async () => {
+      await isMovieInWatchList();
+      await isMovieInWatchedList();
+    })();
+  }, [details]);
 
   return !show ? null : (
     <div className="modal">
@@ -33,7 +75,12 @@ const DetailsCard = ({ show, setShow, details, detailsError }) => {
         <div className="cardLeft">
           <div className="poster">
             <div className="detailsSave">
-              <SaveButtons />
+              <SaveButtons
+                watchedIcon={watchedIcon}
+                watchedMovie={watchedMovie}
+                bookmarkColor={bookmarkColor}
+                bookmarkClick={bookmarkClick}
+              />
             </div>
             <img
               src={`https://image.tmdb.org/t/p/w500/${details.poster_path}`}
@@ -96,8 +143,18 @@ const DetailsCard = ({ show, setShow, details, detailsError }) => {
           <p>{details.vote_average}</p>
         </div>
         <div className="right">
-          <button onClick={() => bookmarkClick()}>Add to Watchlist</button>
-          <button onClick={() => watchedMovie()}>Already Watched</button>
+          <button
+            onClick={() => bookmarkClick()}
+            style={{ backgroundColor: bookmarkColor }}
+          >
+            Add to Watchlist
+          </button>
+          <button
+            onClick={() => watchedMovie()}
+            style={{ backgroundColor: watchedIcon }}
+          >
+            Already Watched
+          </button>
         </div>
       </div>
     </div>

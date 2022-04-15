@@ -41,7 +41,7 @@ const ToWatch = (props) => {
     if (currentUser) {
       handleFetchUserswatchlist();
     }
-  }, []);
+  }, [watchlist]);
 
   const runDetailsSearch = (id, index) => {
     if (watchlist[index].media_type === "movie") {
