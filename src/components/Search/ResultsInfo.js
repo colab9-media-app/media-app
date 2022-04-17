@@ -1,5 +1,3 @@
-// import { faBookmark, faEye } from "@fortawesome/free-solid-svg-icons";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getDoc, doc } from "firebase/firestore";
 import SaveButtons from "../SaveButtons";
 import logoTMDB from "../../assets/images/logoTMDB.svg";

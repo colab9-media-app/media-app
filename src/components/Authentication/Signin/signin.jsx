@@ -58,7 +58,6 @@ const Signin = () => {
           setErrorMessage("Wrong Password");
           break;
         default:
-          console.log(error);
           toast.error("Something went wrong");
           setErrorMessage("Something went wrong");
       }
@@ -77,7 +76,6 @@ if (authenticated) {
   history.push("/homepage");
 }
 }, [authenticated]);
-// console.log(history)
 
   return (
     <div className="signin-container">

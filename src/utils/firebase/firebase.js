@@ -53,11 +53,7 @@ export const createUserDocumentFromAuth = async (
 
   const userDocRef = doc(db, "users", userAuth.uid);
 
-  console.log(userDocRef);
-
   const userSnapshot = await getDoc(userDocRef);
-  console.log(userSnapshot);
-  console.log(userSnapshot.exists());
 
   if (!userSnapshot.exists()) {
     const { displayName, email } = userAuth;
@@ -118,7 +114,6 @@ export const addMovieToWatchList = async (movie, userId) => {
 };
 
 export const addMovieToWatchedList = async (movie, userId) => {
-  console.log(movie);
   const movieRef = doc(db, "users", `${userId}/watchedlist/${movie.id}`);
   const movieSnapshot = await getDoc(movieRef);
   const movieWatchListSnapshot = await getDoc(
