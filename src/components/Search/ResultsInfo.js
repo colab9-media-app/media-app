@@ -10,7 +10,9 @@ import {
   addMovieToWatchedList,
   db,
   switchMovieToWatchedList,
-  switchMovieToWatchList
+  switchMovieToWatchList,
+  getUserWatchList,
+  getUserWatchedList
 } from "../../utils/firebase/firebase";
 import { toast } from "react-toastify";
 
@@ -19,11 +21,11 @@ const ResultsInfo = (props) => {
   const [bookmarkColor, setBookmarkColor] = useState(null);
   const { currentUser } = useContext(UserContext);
   const [watchedIcon, setWatchedicon] = useState(null);
-  const [alreadyinwatched, setAlreadyinwatched] = useState(false);
 
   const bookmarkClick = async () => {
     await addMovieToWatchList(props.media, currentUser.uid);
     await switchMovieToWatchList(props.media, currentUser.uid);
+    setBookmarkColor("#1FA5FF");
     toast.success("Movie added to watchlist");
   };
 
@@ -43,6 +45,7 @@ const ResultsInfo = (props) => {
   const watchedMovie = async () => {
     await addMovieToWatchedList(props.media, currentUser.uid);
     await switchMovieToWatchedList(props.media, currentUser.uid);
+    setWatchedicon("#1FA5FF");
     await isMovieInWatchList();
     toast.success("Movie marked as watched");
   };

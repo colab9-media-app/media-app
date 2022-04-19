@@ -183,6 +183,18 @@ export const saveSearchText = async (searchText, userId) => {
   }
 };
 
+// export const getSearchHistory = async (userId) => {
+//   const userHistoryRef = doc(db, "searchHistory", userId);
+//   const userHistorySnapshot = await getDoc(userHistoryRef);
+//   if (userHistorySnapshot.exists()) {
+//     return userHistorySnapshot.data().searchTexts;
+//   }
+//   return [];
+  
+// }
+
+// console.log(userhi);
+
 export const switchMovieToWatchedList = async (movie, userId) => {
   const movieRef = doc(db, "users", `${userId}/watchlist/${movie.id}`);
   const movieSnapshot = await getDoc(movieRef);

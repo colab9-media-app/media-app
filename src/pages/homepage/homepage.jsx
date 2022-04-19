@@ -11,6 +11,7 @@ import logo from "../../assets/images/logo.png";
 import ToWatch from "../ToWatch/ToWatch";
 import Watched from "../Watched/Watched";
 import Logo from "../../components/Logo/logo";
+import { async } from "@firebase/util";
 
 const Homepage = () => {
   const [showSignOutButton, setShowSignOutButton] = useState(false);
@@ -18,10 +19,10 @@ const Homepage = () => {
   const history = useHistory();
   const { currentUser, fecthSearchedMovies } = useContext(UserContext);
 
-  const showButton = () => {
+  const showButton = async () => {
     setShowSignOutButton(!showSignOutButton);
+     
   };
-
   useEffect(() => {
     (async () => {
       await fecthSearchedMovies(currentUser.uid);
@@ -57,11 +58,34 @@ const Homepage = () => {
             </button>
           )}
           <br />
-          <div className="dropdown">
+          <div className="dropdown"  >
             {showSignOutButton && (
-              <button className="sign-out" onClick={() => signUserOut(history)}>
-                Sign Out <FontAwesomeIcon icon={faRightFromBracket} />
-              </button>
+              <>
+                 <button
+                  className=" mobile-view"
+                  onClick={() => setDisplay("Watchlist")}
+                  data-aos="fade-left"
+                >
+                  Watchlist
+                </button>
+                <br />
+                <button
+                  className=" mobile-view"
+                  onClick={() => setDisplay("Watched")}
+                  data-aos="fade-left"
+                >
+                  Watched
+                </button>
+                <br />
+                <button
+                  className="sign-out"
+                  onClick={() => signUserOut(history)}
+                  data-aos="fade-left"
+                >
+                  Sign Out <FontAwesomeIcon icon={faRightFromBracket} />
+                </button>
+               
+              </>
             )}
           </div>
         </div>

@@ -19,17 +19,19 @@ const DetailsCard = ({ show, setShow, details, detailsError }) => {
   const { currentUser } = useContext(UserContext);
   const [bookmarkColor, setBookmarkColor] = useState(null);
   const [watchedIcon, setWatchedicon] = useState(null);
-  const [border, setBorder] = useState(null);
+
 
   const bookmarkClick = async () => {
     await addMovieToWatchList(details, currentUser.uid);
     await switchMovieToWatchList(details, currentUser.uid);
+    setBookmarkColor("#1FA5FF");
     toast.success("Movie added to watchlist");
   };
 
   const watchedMovie = async () => {
     await addMovieToWatchedList(details, currentUser.uid);
     await switchMovieToWatchedList(details, currentUser.uid);
+    setBookmarkColor("#1FA5FF");
     toast.success("Movie added to watched list");
   };
   const isMovieInWatchList = async () => {
@@ -41,7 +43,7 @@ const DetailsCard = ({ show, setShow, details, detailsError }) => {
     const movieSnapshot = await getDoc(movieRef);
     if (movieSnapshot.exists()) {
       setBookmarkColor("#1FA5FF");
-      setBorder("none");
+
     }
     return;
   };
@@ -55,14 +57,13 @@ const DetailsCard = ({ show, setShow, details, detailsError }) => {
     const movieSnapshot = await getDoc(movieRef);
     if (movieSnapshot.exists()) {
       setWatchedicon("#1FA5FF");
-      setBorder("none");
     }
     return;
   };
   useEffect(() => {
     (async () => {
-      await isMovieInWatchList();
-      await isMovieInWatchedList();
+       isMovieInWatchList();
+       isMovieInWatchedList();
     })();
   }, [details]);
 
