@@ -53,7 +53,6 @@ export const createUserDocumentFromAuth = async (
 
   const userDocRef = doc(db, "users", userAuth.uid);
 
-
   const userSnapshot = await getDoc(userDocRef);
 
   if (!userSnapshot.exists()) {
@@ -115,7 +114,6 @@ export const addMovieToWatchList = async (movie, userId) => {
 };
 
 export const addMovieToWatchedList = async (movie, userId) => {
-  console.log(movie);
   const movieRef = doc(db, "users", `${userId}/watchedlist/${movie.id}`);
   const movieSnapshot = await getDoc(movieRef);
   const movieWatchListSnapshot = await getDoc(

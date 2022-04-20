@@ -18,8 +18,6 @@ const MediaSearch = () => {
   const [errorStatus, setErrorStatus] = useState(false);
   const [searchHeading, setSearchHeading] = useState(null);
 
-  // const {searchQuery, searchResult} = JSON.parse(window.sessionStorage.getItem("searchDetails") ? window.sessionStorage.getItem("searchDetails") : "{searchQuery:'',searchResults:''}");
-
   const runSearch = () => {
     if (userInput !== "") {
       axios({
@@ -34,7 +32,6 @@ const MediaSearch = () => {
         .then((res) => {
           const data = res.data.results;
 
-          // console.log(res);
           if (res.status === 200 && data.length > 0) {
             const filteredData = data.filter((content) => {
               if (content.poster_path !== null) {
