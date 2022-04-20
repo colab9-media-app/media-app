@@ -23,8 +23,8 @@ const ToWatch = (props) => {
   const [details, setDetails] = useState([]);
   const [detailsError, setDetailsError] = useState(false);
 
-  const handleFetchUserswatchlist = () => {
-    getUserWatchList(currentUser.uid).then((res) => {
+  const handleFetchUserswatchlist = async () => {
+   await getUserWatchList(currentUser.uid).then((res) => {
       setWatchlist(res);
       if (res.length === 0) {
         setNoWatchlist(true);

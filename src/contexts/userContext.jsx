@@ -17,7 +17,6 @@ export const UserProvider = ({ children }) => {
     let searchTextsArray = [];
     const userHistoryRef = doc(db, "searchHistory", userId);
     const userHistorySnapshot = await getDoc(userHistoryRef);
-    console.log(userHistorySnapshot.data());
     if (userHistorySnapshot.exists()) {
       searchTextsArray = userHistorySnapshot.data().searchTexts;
       await Promise.all(

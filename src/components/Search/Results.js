@@ -41,7 +41,6 @@ const Results = (props) => {
         .then((res) => {
           if (res.status === 200) {
             setDetails(res.data);
-            console.log(res.data);
           } else {
             throw Error();
           }

@@ -62,8 +62,8 @@ const DetailsCard = ({ show, setShow, details, detailsError }) => {
   };
   useEffect(() => {
     (async () => {
-       isMovieInWatchList();
-       isMovieInWatchedList();
+      await isMovieInWatchList();
+       await isMovieInWatchedList();
     })();
   }, [details]);
 

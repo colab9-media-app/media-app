@@ -33,8 +33,6 @@ const Watchedlist = () => {
     await handleFetchUsersWatchedlist();
   };
 
- 
-
   const runDetailsSearch = (id, index) => {
     if (watchedlist[index].media_type === "movie") {
       axios({
